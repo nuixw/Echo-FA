@@ -1,0 +1,36 @@
+@import "styles/mixins";
+
+.socials {
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  gap: 0.1em;
+}
+
+.social {
+  --size: 1.5em;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0.33em;
+
+  &::after {
+    transition: transform var(--transition-link);
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: inherit;
+    background-color: var(--color);
+    inset: 0;
+    transform: scale(0);
+  }
+
+  &:hover {
+    &::after {
+      transform: scale(1);
+    }
+  }
+}

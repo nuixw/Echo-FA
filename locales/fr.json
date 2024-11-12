@@ -1,0 +1,22 @@
+{
+  "All": {
+    "login": "Connexion"
+  },
+  "Seo": {
+    "Home": {
+      "title": "Accueil",
+      "description": "Ceci est la page d'accueil de l'exemple next-intl avec Auth.js."
+    }
+  },
+  "Home": {
+    "title": "Accueil",
+    "loggedIn": "Connecté en tant que {username}",
+    "loggedOut": "Vous êtes déconnecté.",
+    "logout": "Déconnexion",
+    "secret": "Page secrète pour les utilisateurs connectés"
+  },
+  "Admin": {
+    "description": "Page admin uniquement accessible en étant connecté.",
+    "back": "Retour à l'accueil"
+  }
+}

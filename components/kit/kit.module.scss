@@ -1,0 +1,13 @@
+@import "styles/mixins";
+
+.section {
+  width: var(--section-width);
+  max-width: var(--section-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  @include flex(flex-start, flex-start, column);
+  gap: var(--content-gap, calc(24px + 6 * (100vw - 320px) / 1080));
+}

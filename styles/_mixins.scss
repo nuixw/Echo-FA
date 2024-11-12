@@ -1,0 +1,188 @@
+$xs: 480px;
+$sm: 576px;
+$md: 768px;
+$lg: 900px;
+$xl: 1200px;
+$xxl: 1400px;
+
+$responsiveNav: 1250px;
+
+@mixin max($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin min($width) {
+  @media screen and (min-width: ($width + 1px)) {
+    @content;
+  }
+}
+
+@mixin min-max($min, $max) {
+  @media screen and (max-width: $max) and (min-width: ($min + 1px)) {
+    @content;
+  }
+}
+
+@mixin max-min($max, $min) {
+  @media screen and (max-width: $max) and (min-width: ($min + 1px)) {
+    @content;
+  }
+}
+
+@mixin is-hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin transition(
+  $transition,
+  $properties,
+  $timing-function: null,
+  $delay: null
+) {
+  $transition-time: if(
+    type-of($transition) == number,
+    #{$transition}s,
+    var(--#{$transition})
+  );
+
+  $transitions: ();
+  @each $property in $properties {
+    $transitions: append(
+      $transitions,
+      #{$property} $transition-time $timing-function $delay,
+      comma
+    );
+  }
+
+  transition: $transitions;
+}
+
+@mixin real-height($n: null) {
+  @if $n == null {
+    height: 100vh;
+    height: var(--real-height);
+  } @else {
+    height: calc(100vh * #{$n});
+    height: calc(var(--real-height) * #{$n});
+  }
+}
+
+@mixin real-width($n: null) {
+  @if $n == null {
+    width: 100vw;
+    width: var(--real-width);
+  } @else {
+    width: calc(100vw * #{$n});
+    width: calc(var(--real-width) * #{$n});
+  }
+}
+
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  @if $direction != row {
+    flex-direction: $direction;
+  }
+}
+
+@mixin backdrop($px: 16px) {
+  backdrop-filter: blur($px);
+  -webkit-backdrop-filter: blur($px);
+  transform: translate3d(0, 0, 0); // force GPU for performance on Safari
+}
+
+@mixin blur($px: 24px) {
+  filter: blur($px);
+  -webkit-filter: blur($px);
+  transform: translate3d(0, 0, 0); // force GPU for performance on Safari
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@mixin clamp($line: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin translate-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin translate-x {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin translate-y {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin mask($gradient) {
+  mask: $gradient;
+  -webkit-mask: $gradient;
+}
+
+@mixin auto-alpha($alpha) {
+  opacity: $alpha;
+  visibility: if($alpha == 0, hidden, visible);
+}
+
+@mixin user-select($value: none) {
+  user-select: $value;
+  -webkit-user-select: $value;
+  -moz-user-select: $value;
+  -ms-user-select: $value;
+}
+
+@mixin border-gradient($gradient) {
+  border: 1px solid transparent;
+  background: $gradient border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  border-radius: inherit;
+}
+
+@mixin text-vertical($direction: vertical-lr) {
+  writing-mode: $direction;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+@mixin selection($bg, $color) {
+  *::selection {
+    background-color: $bg;
+    color: $color;
+    -webkit-text-fill-color: $color;
+  }
+
+  *::-moz-selection {
+    background-color: $bg;
+    color: $color;
+    -webkit-text-fill-color: $color;
+  }
+}

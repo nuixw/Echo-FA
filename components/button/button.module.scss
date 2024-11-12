@@ -1,0 +1,78 @@
+@import "styles/mixins";
+
+.btn {
+  --transition: var(--transition-btn);
+  --padding-y: 1.15em;
+  --padding-x: 1.75em;
+  --gap: 0.75em;
+  --arrow: 2.5em;
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  transition: background-color var(--transition), color var(--transition),
+    transform var(--transition-scale);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: var(--radius-1);
+  border: 1px solid var(--primary);
+  padding: var(--padding-y) var(--padding-x);
+  gap: var(--gap);
+  overflow: hidden;
+  @include user-select;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  span,
+  svg {
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  svg {
+    width: var(--arrow);
+    fill: var(--primary);
+
+    &:first-child {
+      position: absolute;
+      left: 0;
+      transform: translateX(-100%);
+    }
+  }
+
+  &:hover {
+    background-color: rgba(var(--primary-rgb), 0.25);
+
+    span {
+      color: var(--primary);
+      transform: translateX(calc(var(--arrow) + var(--padding-x) - var(--gap)));
+    }
+
+    svg {
+      &:first-child {
+        transform: translateX(var(--padding-x));
+      }
+
+      &:last-child {
+        transform: translateX(calc(100% + var(--padding-x)));
+      }
+    }
+  }
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  max-width: 100%;
+
+  & > * {
+    flex: 1;
+  }
+
+  @include min($xs) {
+    display: inline-flex;
+  }
+}
