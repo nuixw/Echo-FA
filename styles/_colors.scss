@@ -1,8 +1,12 @@
 :root {
   $colors: (
-    bg: "5, 8, 17",
-    success: "68, 255, 121",
-    danger: "255, 81, 81"
+    body: "1, 8, 26",
+    primary: "8, 254, 162",
+    secondary: "255, 0, 255",
+    tertiary: "108, 13, 255",
+    quaternary: "9, 165, 255",
+    text-primary: "255, 255, 255",
+    text-secondary: "183, 194, 221"
   );
 
   @each $color, $rgb in $colors {

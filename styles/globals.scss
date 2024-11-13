@@ -13,9 +13,10 @@
 
 html {
   background-color: var(--body);
-  color: var(--text);
+  color: var(--text-primary);
   font-size: calc(15px + 1 * (100vw - 320px) / 1080);
-  font-weight: 300;
+  font-weight: 400;
+  text-transform: uppercase;
   font-synthesis: none !important;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -33,7 +34,7 @@ body {
 }
 
 body {
-  font-family: var(--font-main);
+  font-family: var(--font-tertiary);
 }
 
 svg {

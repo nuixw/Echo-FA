@@ -6,16 +6,7 @@ export const env = createEnv({
    * Serverside Environment variables, not available on the client.
    * Will throw if you access these variables on the client.
    */
-  server: {
-    DATABASE_URL: z.string().url().min(1),
-
-    NEXTAUTH_SECRET: z.string().min(1),
-
-    GITHUB_ID: z.string().min(1),
-    GITHUB_SECRET: z.string().min(1),
-    GOOGLE_ID: z.string().min(1),
-    GOOGLE_SECRET: z.string().min(1)
-  },
+  server: {},
   /*
    * Environment variables available on the client (and server).
    *
@@ -33,15 +24,6 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NEXT_PUBLIC_NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
-    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
-
-    DATABASE_URL: process.env.DATABASE_URL,
-
-    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-
-    GITHUB_ID: process.env.GITHUB_ID,
-    GITHUB_SECRET: process.env.GITHUB_SECRET,
-    GOOGLE_ID: process.env.GOOGLE_ID,
-    GOOGLE_SECRET: process.env.GOOGLE_SECRET
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL
   }
 })

@@ -1,27 +1,43 @@
 import clsx from "clsx"
 import localFont from "next/font/local"
 
-const heading = localFont({
-  variable: "--font-heading",
+const primary = localFont({
+  variable: "--font-primary",
   display: "swap",
   src: [
     {
-      path: "../public/fonts/brockmann/brockmann-semibold.woff2",
-      weight: "600",
+      path: "../public/fonts/thunder/thunder-vf-variable.woff2",
       style: "normal"
     }
   ]
 })
 
-const main = localFont({
-  variable: "--font-main",
+const secondary = localFont({
+  variable: "--font-secondary",
   display: "swap",
   src: [
     {
-      path: "../public/fonts/satoshi/Satoshi-Variable.woff2",
+      path: "../public/fonts/triakis/triakis-regular.woff2",
+      weight: "400",
       style: "normal"
     }
   ]
 })
 
-export const fonts = clsx(heading.variable, main.variable)
+const tertiary = localFont({
+  variable: "--font-tertiary",
+  display: "swap",
+  src: [
+    {
+      path: "../public/fonts/brockmann/brockmann-regular.woff2",
+      weight: "400",
+      style: "normal"
+    }
+  ]
+})
+
+export const fonts = clsx(
+  primary.variable,
+  secondary.variable,
+  tertiary.variable
+)
