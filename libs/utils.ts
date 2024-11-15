@@ -16,3 +16,5 @@ export const shuffleArray = <T>(array: T[]): T[] => {
   }
   return array
 }
+
+export const stripTags = (str: string) => str.replace(/<[^>]*>/g, "")

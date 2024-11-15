@@ -20,14 +20,24 @@
   --size-7: calc(48px + 5 * (100vw - 320px) / 1080);
 
   /* Wrapper */
-  --wrapper-width: calc(750px + 500 * (100vw - 320px) / 1080);
+  --wrapper-header: calc(700px + 500 * (100vw - 320px) / 1080);
+  --wrapper-width: calc(600px + 350 * (100vw - 320px) / 1080);
   --wrapper-middle: calc(var(--wrapper-width) / 2.5);
   --wrapper-max: 85vw;
 
   /* Main */
   --main-padding: calc(32px + 24 * (100vw - 320px) / 1080);
 
+  /* Angle */
+  --angle: 40deg;
+  --angle-reverse: -40deg;
+  --angle-radius: 3px;
+
+  /* Shadow */
+  --shadow-1: 0 0 0 1px var(--bg-opacity-3) inset;
+  --shadow-2: 0 24px 40px rgba(0, 0, 0, 0.25);
+
   @include max($md) {
-    --wrapper-max: 90vw;
+    --wrapper-max: 88vw;
   }
 }

@@ -1,0 +1,226 @@
+@import "styles/mixins";
+
+.hero {
+  overflow: hidden;
+}
+
+.palmier {
+  width: 55%;
+  top: 40vh;
+  left: 70%;
+
+  @include max(600px) {
+    left: 50%;
+  }
+}
+
+.wrapper {
+  width: var(--wrapper-header);
+}
+
+.girl {
+  width: 48%;
+  min-width: 400px;
+  padding-top: 15vh;
+  overflow: hidden;
+  @include user-select;
+  z-index: 10;
+  pointer-events: none;
+
+  @include max(950px) {
+    left: -10vw;
+  }
+
+  @include max(600px) {
+    left: 0;
+    width: 40%;
+    min-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 6vh;
+  }
+
+  img {
+    width: 100%;
+    margin-bottom: -15vh;
+  }
+}
+
+.content {
+  font-family: var(--font-primary);
+  font-weight: 800;
+
+  @include min(600px) {
+    position: absolute;
+    padding-top: 15%;
+    left: 50%;
+  }
+}
+
+.heading {
+  --size: calc(200px + 150 * (100vw - 320px) / 1080);
+  left: -40%;
+  padding-top: calc(80px + 40 * (100vw - 320px) / 1080);
+  text-transform: uppercase;
+
+  @include max(1080px) {
+    left: -30%;
+  }
+
+  @include max(700px) {
+    left: -15%;
+  }
+
+  @include max(650px) {
+    left: -10%;
+  }
+
+  @include max(600px) {
+    text-align: center;
+    left: 0;
+    padding-top: calc(200px + 180 * (100vw - 320px) / 1080);
+  }
+}
+
+.sub {
+  left: calc(var(--size) * 0.29);
+  top: -0.5em;
+
+  @include max(600px) {
+    left: 0;
+    margin-bottom: 1.5em;
+  }
+}
+
+.title {
+  line-height: 0.85;
+  font-size: var(--size);
+
+  @include max(600px) {
+    line-height: 0.5;
+  }
+
+  .first {
+    font-size: 0.3em;
+    left: 0.95em;
+    color: var(--primary);
+    display: block;
+
+    @include max(600px) {
+      left: 0;
+      font-size: 0.4em;
+
+      .line1 {
+        display: none;
+      }
+    }
+
+    .line1 {
+      fill: var(--secondary);
+      width: 50%;
+      position: absolute;
+      left: 90%;
+      bottom: 20%;
+    }
+  }
+
+  strong {
+    font-weight: inherit;
+    display: block;
+
+    @include max(600px) {
+      display: inline-block;
+      font-size: 0.65em;
+    }
+  }
+
+  .gta {
+    display: block;
+    font-size: 0.5em;
+    left: 1em;
+    margin-top: -0.25em;
+    z-index: 5;
+
+    @include max(600px) {
+      display: inline-block;
+      left: 0;
+      font-size: 0.65em;
+      margin-left: 0.15em;
+    }
+
+    .rp {
+      position: absolute;
+      fill: var(--secondary);
+      width: 40%;
+      top: 0;
+      transform: translate(-42%, -95%);
+      z-index: -1;
+
+      @include max(600px) {
+        z-index: 5;
+        transform: translate(-70%, 130%);
+        width: 50%;
+      }
+    }
+  }
+}
+
+.japan {
+  font-size: calc(10px + 8 * (100vw - 320px) / 1080);
+  top: 13%;
+  left: 36%;
+  letter-spacing: 0.5em;
+
+  @include max(600px) {
+    top: 0;
+    font-size: 9px;
+  }
+}
+
+.btn {
+  left: 50%;
+  margin-top: calc(24px + 8 * (100vw - 320px) / 1080);
+
+  @include max(700px) {
+    left: 12%;
+  }
+
+  @include max(600px) {
+    left: 0%;
+    margin-top: calc(42px + 24 * (100vw - 320px) / 1080);
+  }
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+  }
+
+  &::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--body-rgb), 0.95) 10%,
+      rgba(var(--body-rgb), 0)
+    );
+  }
+
+  &::after {
+    top: 50%;
+    background: linear-gradient(to top, var(--body), rgba(var(--body-rgb), 0));
+  }
+
+  & > div {
+    position: absolute;
+    inset: 0;
+    background: url("/img/home-hero-bg.webp") no-repeat center center / cover;
+    will-change: transform;
+  }
+}

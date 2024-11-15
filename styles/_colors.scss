@@ -3,11 +3,17 @@
     body: "1, 8, 26",
     primary: "8, 254, 162",
     secondary: "255, 0, 255",
-    tertiary: "108, 13, 255",
+    tertiary: "134, 54, 255",
     quaternary: "9, 165, 255",
     text-primary: "255, 255, 255",
-    text-secondary: "183, 194, 221"
+    text-secondary: "183, 194, 221",
+    grey-primary: "51, 60, 102",
+    grey-secondary: "115, 136, 236"
   );
+
+  --bg-opacity-1: rgba(var(--grey-primary-rgb), 0.1);
+  --bg-opacity-2: rgba(var(--grey-secondary-rgb), 0.15);
+  --bg-opacity-3: rgba(var(--grey-secondary-rgb), 0.05);
 
   @each $color, $rgb in $colors {
     --#{$color}-rgb: #{$rgb};

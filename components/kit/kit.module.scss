@@ -1,0 +1,29 @@
+@import "styles/mixins";
+
+.wrapper {
+  width: var(--wrapper-width);
+  max-width: var(--wrapper-max);
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 10;
+}
+
+.sub {
+  font-size: calc(14px + 4 * (100vw - 320px) / 1080);
+  color: var(--secondary);
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+  letter-spacing: 0.25em;
+}
+
+.japan {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: var(--secondary);
+  font-size: 10px;
+  position: absolute;
+  font-weight: 30;
+  pointer-events: none;
+  @include user-select;
+  white-space: nowrap;
+}

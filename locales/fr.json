@@ -9,14 +9,48 @@
     }
   },
   "Home": {
-    "title": "Accueil",
-    "loggedIn": "Connecté en tant que {username}",
-    "loggedOut": "Vous êtes déconnecté.",
-    "logout": "Déconnexion",
-    "secret": "Page secrète pour les utilisateurs connectés"
-  },
-  "Admin": {
-    "description": "Page admin uniquement accessible en étant connecté.",
-    "back": "Retour à l'accueil"
+    "Hero": {
+      "sub": "Serveur rôleplay GTA V",
+      "title": {
+        "first": "Nouvelle",
+        "strong": "ère",
+        "gta": "GTA"
+      },
+      "discover": "Découvrir",
+      "join": "Nous rejoindre"
+    },
+    "Words": {
+      "line": "AMOUR GTA ACTION GANG CRIME BRAQUAGE SXXE TRAHISON POUVOIR VICE CITY MEURTRE LOS SANTOS GLOIRE HUMOUR"
+    },
+    "Services": {
+      "sub": "Communautaire",
+      "title": {
+        "line1": "Le premier",
+        "line2": "Serveur RP",
+        "line3": "au service des joueurs"
+      },
+      "list": {
+        "card1": {
+          "sub": "Scripts",
+          "title": "Des scripts <strong>100% Customs</strong>",
+          "desc": "Huic Arabia est conserta, ex alio latere Nabataeis contigua opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium."
+        },
+        "card2": {
+          "sub": "Idées",
+          "title": "Votre serveur <strong>vos idées</strong>",
+          "desc": "Huic Arabia est conserta, ex alio latere Nabataeis contigua opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium."
+        },
+        "card3": {
+          "sub": "Développement",
+          "title": "Des développeurs <strong>expérimentés</strong>",
+          "desc": "Huic Arabia est conserta, ex alio latere Nabataeis contigua opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium."
+        },
+        "card4": {
+          "sub": "Respect",
+          "title": "Des joueurs <strong>respectueux</strong>",
+          "desc": "Huic Arabia est conserta, ex alio latere Nabataeis contigua opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium."
+        }
+      }
+    }
   }
 }

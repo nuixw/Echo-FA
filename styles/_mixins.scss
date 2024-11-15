@@ -173,7 +173,7 @@ $responsiveNav: 1250px;
   transform: rotate(180deg);
 }
 
-@mixin selection($bg, $color) {
+@mixin selection($bg, $color: var(--text-primary)) {
   *::selection {
     background-color: $bg;
     color: $color;

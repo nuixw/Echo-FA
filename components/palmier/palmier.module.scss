@@ -1,0 +1,30 @@
+@import "styles/mixins";
+
+.palmier {
+  position: absolute;
+  z-index: 1000;
+  @include user-select;
+  pointer-events: none;
+
+  & > div {
+    transform: translateY(15%);
+    will-change: transform;
+  }
+
+  img {
+    width: 100%;
+    min-width: 500px;
+    animation: swing 10s infinite;
+    transform-origin: bottom right;
+    will-change: transform;
+    @keyframes swing {
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(5deg);
+      }
+    }
+  }
+}

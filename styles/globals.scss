@@ -16,7 +16,6 @@ html {
   color: var(--text-primary);
   font-size: calc(15px + 1 * (100vw - 320px) / 1080);
   font-weight: 400;
-  text-transform: uppercase;
   font-synthesis: none !important;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -24,7 +23,7 @@ html {
   -o-tab-size: 4;
   tab-size: 4;
   @include no-scrollbar;
-  @include selection(rgba(var(--primary-rgb), 0.5), var(--white));
+  @include selection(rgba(var(--primary-rgb), 0.5));
 }
 
 html,
@@ -35,6 +34,20 @@ body {
 
 body {
   font-family: var(--font-tertiary);
+  margin: 0 auto;
+
+  @include min(600px) {
+    &::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      height: 100vh;
+      background: url("/img/noise.webp") repeat center center;
+      background-size: 30%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  }
 }
 
 svg {

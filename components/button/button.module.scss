@@ -1,78 +1,123 @@
 @import "styles/mixins";
 
 .btn {
-  --transition: var(--transition-btn);
-  --padding-y: 1.15em;
-  --padding-x: 1.75em;
-  --gap: 0.75em;
-  --arrow: 2.5em;
+  --transition: 0.25s var(--cubic);
+  --border-width: 1px;
+  --color: var(--primary);
+  --bg-color: rgba(var(--body-rgb), 0.65);
+  --height: 3.5em;
+  transition: border-color var(--transition), color var(--transition);
   font-family: var(--font-secondary);
-  font-size: 0.8rem;
-  transition: background-color var(--transition), color var(--transition),
-    transform var(--transition-scale);
+  text-transform: uppercase;
+  height: var(--height);
+  font-size: calc(11px + 2 * (100vw - 320px) / 1080);
+  padding: 0 0.75em;
+  border-top: var(--border-width) solid var(--color);
+  border-bottom: var(--border-width) solid var(--color);
+  white-space: nowrap;
+  margin: 0 calc(var(--height) / 1.75);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  border-radius: var(--radius-1);
-  border: 1px solid var(--primary);
-  padding: var(--padding-y) var(--padding-x);
-  gap: var(--gap);
-  overflow: hidden;
+  text-align: center;
+  background-color: var(--bg-color);
+  color: var(--color);
   @include user-select;
 
-  &:active {
-    transform: scale(0.95);
-  }
-
-  span,
-  svg {
-    transition: transform var(--transition), color var(--transition);
-  }
-
-  svg {
-    width: var(--arrow);
-    fill: var(--primary);
-
-    &:first-child {
-      position: absolute;
-      left: 0;
-      transform: translateX(-100%);
-    }
-  }
-
-  &:hover {
-    background-color: rgba(var(--primary-rgb), 0.25);
+  &.reverse {
+    transform: scaleX(-1);
 
     span {
-      color: var(--primary);
-      transform: translateX(calc(var(--arrow) + var(--padding-x) - var(--gap)));
+      transform: scaleX(-1);
     }
+  }
 
-    svg {
-      &:first-child {
-        transform: translateX(var(--padding-x));
-      }
+  &.secondary {
+    --color: var(--secondary);
+  }
 
-      &:last-child {
-        transform: translateX(calc(100% + var(--padding-x)));
-      }
-    }
+  span {
+    top: 0.05em;
+    left: 0.1em;
+  }
+
+  &::after {
+    transition: opacity var(--transition);
+    content: "";
+    position: absolute;
+    inset: 30% -10%;
+    background-color: var(--color);
+    border-radius: 50%;
+    pointer-events: none;
+    @include blur(16px);
   }
 }
 
-.group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75em;
-  max-width: 100%;
+.left,
+.right {
+  position: absolute;
+  height: calc(100% + var(--border-width) * 2);
+  top: calc(-1 * var(--border-width));
+  width: calc(var(--height) + 3px);
+  overflow: hidden;
+  pointer-events: none;
 
-  & > * {
-    flex: 1;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: auto;
+    background-color: var(--bg-color);
   }
 
-  @include min($xs) {
-    display: inline-flex;
+  &::before {
+    transition: border-color var(--transition);
+    width: 2.75em;
+    height: 110%;
+    transform: rotate(var(--angle-reverse));
+  }
+
+  &::after {
+    transition: background-color var(--transition);
+    height: var(--border-width);
+    width: 45%;
+    background-color: var(--color);
+    z-index: 5;
+  }
+}
+
+.left {
+  right: 100%;
+
+  &::before {
+    border-top: var(--border-width) solid var(--color);
+    border-left: var(--border-width) solid var(--color);
+    bottom: calc(-1 * var(--border-width));
+    left: 100%;
+    transform-origin: bottom left;
+    border-top-left-radius: var(--angle-radius);
+  }
+
+  &::after {
+    top: 0;
+    right: 0;
+  }
+}
+
+.right {
+  left: 100%;
+
+  &::before {
+    border-bottom: var(--border-width) solid var(--color);
+    border-right: var(--border-width) solid var(--color);
+    top: calc(-1 * var(--border-width));
+    right: 100%;
+    transform-origin: top right;
+    border-bottom-right-radius: var(--angle-radius);
+  }
+
+  &::after {
+    bottom: 0;
+    left: 0;
   }
 }

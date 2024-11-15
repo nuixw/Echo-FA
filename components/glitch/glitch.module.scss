@@ -1,0 +1,13 @@
+@import "styles/mixins";
+
+.glitch {
+  &::before {
+    content: attr(data-glitch);
+    position: absolute;
+    inset: 0;
+  }
+
+  span {
+    color: transparent !important;
+  }
+}

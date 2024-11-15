@@ -1,0 +1,55 @@
+@import "styles/mixins";
+
+.nav {
+  @include flex;
+  z-index: 100;
+  position: absolute;
+  left: 0;
+  width: 100%;
+
+  .separator {
+    transition: min-width var(--transition-fix);
+    min-width: var(--spacing);
+    border-left: 1px solid blue;
+  }
+
+  ul {
+    @include flex;
+    width: 100%;
+    padding: 0 3em;
+
+    li {
+      @include flex;
+      flex: 1 auto;
+    }
+  }
+
+  @include max(1150px) {
+    display: none;
+  }
+
+  .item {
+    --color: transparent;
+    --bg-color: var(--bg-opacity-1);
+    --height: 2.75em;
+    width: 100%;
+    color: var(--text-secondary);
+
+    &::after {
+      opacity: 0;
+    }
+
+    &:hover,
+    &.active {
+      --color: var(--primary);
+      color: var(--text-primary);
+    }
+
+    &.active {
+      color: var(--primary);
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

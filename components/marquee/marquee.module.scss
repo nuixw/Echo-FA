@@ -1,0 +1,36 @@
+@import "styles/mixins";
+
+.marquee {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.2;
+  user-select: none;
+
+  &.right {
+    justify-content: flex-end;
+  }
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.up {
+    .content {
+      flex-direction: column;
+    }
+  }
+
+  &.down {
+    .content {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  will-change: transform;
+}

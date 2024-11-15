@@ -1,19 +1,24 @@
 "use client"
 
+import { IconName } from "@/config/icons"
+import { DirectionHorizontal } from "@/types/Direction"
 import clsx from "clsx"
-import { ReactNode } from "react"
+import { ReactNode, useRef } from "react"
+import { Glitch } from "../glitch"
 import { Icon } from "../icon"
 import { Link } from "../link"
 import s from "./button.module.scss"
 
 export interface ButtonProps {
   children?: ReactNode
-  icon?: string
-  iconPosition?: "left" | "right"
+  icon?: IconName
+  iconPosition?: DirectionHorizontal
   href?: string
   className?: string
   disabled?: boolean
   onClick?: () => void
+  reverse?: boolean
+  secondary?: boolean
 }
 
 export const Button = ({
@@ -24,17 +29,27 @@ export const Button = ({
   className,
   onClick,
   disabled = false,
+  reverse = false,
+  secondary = false,
   ...props
 }: ButtonProps) => {
+  const ref = useRef(null)
   const Content = (
     <>
+      <div className={s.left} />
       {icon && iconPosition == "left" && <Icon icon={icon} />}
-      {children && <span>{children}</span>}
+      {children && <Glitch parent={ref}>{children}</Glitch>}
       {icon && iconPosition == "right" && <Icon icon={icon} />}
+      <div className={s.right} />
     </>
   )
 
-  const classNames = clsx(s.btn, className)
+  const classNames = clsx(
+    s.btn,
+    className,
+    reverse && s.reverse,
+    secondary && s.secondary
+  )
 
   const attrs = {
     className: classNames,
@@ -48,6 +63,7 @@ export const Button = ({
         {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         {...attrs}
         href={href}
+        ref={ref}
       >
         {Content}
       </Link>
@@ -57,6 +73,7 @@ export const Button = ({
       <button
         {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
         {...attrs}
+        ref={ref}
       >
         {Content}
       </button>
