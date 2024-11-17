@@ -12,7 +12,7 @@ const Line = ({ direction }: LineProps) => {
 
   return (
     <Marquee direction={direction} className={clsx(s.line, s[direction])}>
-      <span>{t("line")}</span>
+      <span>{t("line")}&nbsp;</span>
     </Marquee>
   )
 }

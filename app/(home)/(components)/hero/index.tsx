@@ -53,7 +53,7 @@ export const Hero = () => {
               <Sub className={s.sub}>{t("sub")}</Sub>
               <h1 className={s.title}>
                 <span className={s.first}>
-                  {t("title.first")}
+                  {t("title.line1")}
                   <Sprite
                     id="line-1"
                     viewBox="0 0 196 78"
@@ -61,11 +61,11 @@ export const Hero = () => {
                   />
                 </span>
                 <strong>
-                  {t("title.strong")}
+                  {t("title.line2")}
                   <Japan className={s.japan}>新しい時代に参加しましょう</Japan>
                 </strong>
                 <span className={s.gta}>
-                  {t("title.gta")}
+                  {t("title.line3")}
                   <Sprite
                     id="rp"
                     viewBox="0 0 140 83"

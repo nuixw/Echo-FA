@@ -5,7 +5,7 @@ $lg: 900px;
 $xl: 1200px;
 $xxl: 1400px;
 
-$responsiveNav: 1250px;
+$responsiveNav: 1150px;
 
 @mixin max($width) {
   @media screen and (max-width: $width) {

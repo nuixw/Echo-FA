@@ -12,9 +12,9 @@
     "Hero": {
       "sub": "Serveur rôleplay GTA V",
       "title": {
-        "first": "Nouvelle",
-        "strong": "ère",
-        "gta": "GTA"
+        "line1": "Nouvelle",
+        "line2": "ère",
+        "line3": "GTA"
       },
       "discover": "Découvrir",
       "join": "Nous rejoindre"
@@ -51,6 +51,17 @@
           "desc": "Huic Arabia est conserta, ex alio latere Nabataeis contigua opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium."
         }
       }
+    },
+    "About": {
+      "sub": "À propos de nous",
+      "title": {
+        "line1": "Qui",
+        "line2": "sommes",
+        "line3": "nous?"
+      },
+      "p1": "Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium.",
+      "p2": "Saltus erexit et cautos. Haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo.",
+      "join": "Nous rejoindre"
     }
   }
 }

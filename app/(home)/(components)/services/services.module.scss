@@ -14,16 +14,18 @@
   text-transform: uppercase;
 
   @include max(850px) {
-    text-align: center;
-    padding-top: calc(150px + 10 * (100vw - 320px) / 1080);
+    margin-top: calc(150px + 10 * (100vw - 320px) / 1080);
   }
 }
 
 .sub {
-  @include min(850px) {
-    position: absolute;
-    left: calc(var(--size) * 1.9);
-    top: calc(var(--size) * 0.28);
+  position: absolute;
+  left: calc(var(--size) * 1.9);
+  top: calc(var(--size) * 0.28);
+
+  @include max(850px) {
+    top: calc(var(--size) * 0.2);
+    left: calc(var(--size) * 2);
   }
 }
 
@@ -54,10 +56,15 @@
   }
 
   .l2 {
-    margin: -0.25em 0 -0.34em;
+    margin: -0.23em 0 -0.32em;
 
     @include min(850px) {
+      margin: -0.25em 0 -0.34em;
       left: -0.395em;
+    }
+
+    @include max(850px) {
+      left: 0.25em;
     }
   }
 }
@@ -96,6 +103,10 @@
   height: calc(500px + 200 * (100vw - 320px) / 1080);
   overflow: hidden;
   z-index: -1;
+
+  @include min(850px) {
+    left: -25%;
+  }
 
   &::after,
   &::before {
@@ -227,6 +238,7 @@
     pointer-events: none;
     opacity: 0.75;
     transform: translate3d(0, 0, 0) translate(-20%, -30%);
+    overflow: visible;
   }
 
   &Back {
@@ -234,10 +246,13 @@
     inset: 0;
     background-color: var(--bg-opacity-3);
     box-shadow: var(--shadow-1), var(--shadow-2);
-    @include backdrop;
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
+
+    @include min(600px) {
+      @include backdrop;
+    }
   }
 
   &Corner {

@@ -20,7 +20,7 @@
 
 .girl {
   width: 48%;
-  min-width: 400px;
+  min-width: 430px;
   padding-top: 15vh;
   overflow: hidden;
   @include user-select;
@@ -195,6 +195,7 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
+  max-height: 120vh;
 
   &::after,
   &::before {

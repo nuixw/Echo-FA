@@ -1,0 +1,153 @@
+@import "styles/mixins";
+
+.about {
+  position: relative;
+  z-index: 10;
+}
+
+.wrapper {
+  z-index: 10;
+  padding-top: calc(150px + 150 * (100vw - 320px) / 1080);
+}
+
+.bg {
+  position: absolute;
+  inset: -5% 0;
+  min-height: calc(500px + 400 * (100vw - 320px) / 1080);
+  overflow: hidden;
+  z-index: -1;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+  }
+
+  &::before {
+    background: linear-gradient(
+      to bottom,
+      var(--body),
+      rgba(var(--body-rgb), 0)
+    );
+    bottom: 30%;
+  }
+
+  &::after {
+    top: 30%;
+    background: linear-gradient(to top, var(--body), rgba(var(--body-rgb), 0));
+  }
+
+  & > div {
+    position: absolute;
+    inset: 0 0;
+    background: url("/img/home-about-bg.webp") no-repeat center bottom / cover;
+    will-change: transform;
+  }
+}
+
+.heading {
+  --size: calc(80px + 96 * (100vw - 320px) / 1080);
+  text-transform: uppercase;
+
+  @include max(1150px) {
+    left: 20%;
+  }
+
+  @include max(900px) {
+    left: 0;
+  }
+}
+
+.sub {
+  position: absolute;
+  left: calc(var(--size) * 1.6);
+  top: calc(var(--size) * 0.5);
+
+  @include max(850px) {
+    top: calc(var(--size) * 0.4);
+    left: calc(var(--size) * 1.2);
+  }
+}
+
+.title {
+  font-size: var(--size);
+  font-family: var(--font-primary);
+  font-weight: 800;
+  line-height: 0.75;
+
+  span {
+    display: block;
+  }
+
+  .l1 {
+    color: var(--primary);
+  }
+
+  .l2 {
+    left: 0.4em;
+  }
+
+  .l3 {
+    color: var(--secondary);
+  }
+}
+
+.japan {
+  font-size: calc(10px + 8 * (100vw - 320px) / 1080);
+  top: 55%;
+  left: 34.5%;
+  letter-spacing: 0.5em;
+
+  @include max(850px) {
+    display: none;
+  }
+}
+
+.content {
+  margin: var(--main-padding) 0;
+  width: calc(400px + 100 * (100vw - 320px) / 1080);
+  max-width: 100%;
+  font-size: calc(14px + 1 * (100vw - 320px) / 1080);
+  color: var(--text-secondary);
+  line-height: 2;
+
+  & > * + * {
+    margin-top: calc(16px + 8 * (100vw - 320px) / 1080);
+  }
+}
+
+.car {
+  position: absolute;
+  left: 45%;
+  bottom: 0;
+  width: 55%;
+  min-width: 400px;
+  z-index: 0;
+
+  @include max(850px) {
+    top: 35%;
+  }
+
+  @include max(600px) {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    will-change: transform;
+    transform-origin: bottom right;
+  }
+}
+
+.palmier {
+  width: 55%;
+  top: 0;
+  right: 75%;
+  transform: translateY(-15%);
+
+  @include max(900px) {
+    display: none;
+  }
+}

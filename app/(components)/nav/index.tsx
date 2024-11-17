@@ -1,33 +1,70 @@
 "use client"
 
 import { Button } from "@/components/button"
+import { DirectionHorizontal } from "@/types/Direction"
 import clsx from "clsx"
 import { usePathname } from "next/navigation"
 import s from "./nav.module.scss"
 
+interface NavLinkProps {
+  label: string
+  href: string
+  side: DirectionHorizontal
+  sub?: boolean
+}
+
+const NavLink = ({ label, href, side, sub }: NavLinkProps) => {
+  const pathname = usePathname()
+  const reverse = side === "right"
+  const className = clsx(
+    s.item,
+    (href === "/" ? pathname === "/" : pathname.includes(href)) && s.active
+  )
+
+  return (
+    <>
+      {sub ? (
+        <Button reverse={reverse} className={className}>
+          {label}
+        </Button>
+      ) : (
+        <Button href={!sub && href} reverse={reverse} className={className}>
+          {label}
+        </Button>
+      )}
+    </>
+  )
+}
+
 interface ListProps {
   list: NavItem[]
-  side: "left" | "right"
+  side: DirectionHorizontal
 }
 
 const List = ({ list, side }: ListProps) => {
-  const pathname = usePathname()
   return list.map(
     (item) =>
       item[side] && (
-        <li>
-          <Button
-            href={item.href}
-            reverse={side === "right"}
-            className={clsx(
-              s.item,
-              (item.href === "/"
-                ? pathname === "/"
-                : pathname.includes(item.href)) && s.active
-            )}
-          >
-            {item.label}
-          </Button>
+        <li key={item.href}>
+          {item.sub ? (
+            <>
+              <NavLink
+                href={item.href}
+                label={item.label}
+                side={side}
+                sub={item.sub && true}
+              />
+              <ul className={s.sub}>
+                {item.sub.map((sub) => (
+                  <li key={sub.href}>
+                    <NavLink href={sub.href} label={sub.label} side={side} />
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <NavLink href={item.href} label={item.label} side={side} />
+          )}
         </li>
       )
   )
@@ -38,6 +75,7 @@ interface NavItem {
   href: string
   left?: boolean
   right?: boolean
+  sub?: Omit<NavItem, DirectionHorizontal>[]
 }
 
 export const Nav = () => {
@@ -50,7 +88,25 @@ export const Nav = () => {
     {
       label: "Serveur",
       href: "/serveur",
-      left: true
+      left: true,
+      sub: [
+        {
+          label: "Règlement",
+          href: "/reglement"
+        },
+        {
+          label: "Entreprises",
+          href: "/entreprises"
+        },
+        {
+          label: "Illégales",
+          href: "/illegales"
+        },
+        {
+          label: "Code pénal",
+          href: "/code-penal"
+        }
+      ]
     },
     {
       label: "Boutique",
@@ -58,13 +114,13 @@ export const Nav = () => {
       left: true
     },
     {
-      label: "Discord",
-      href: "/discord",
+      label: "Streamers",
+      href: "/streamers",
       right: true
     },
     {
-      label: "Streamers",
-      href: "/streamers",
+      label: "Socials",
+      href: "/socials",
       right: true
     },
     {

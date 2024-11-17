@@ -16,24 +16,30 @@
     --spacing: calc(var(--middle) * 0.9);
 
     .middle {
-      .bottom {
-        transform: scale(0.5) translateY(-90%);
-      }
-
       .logo {
-        transform: translateY(-35%);
         width: 70%;
-        left: 19%;
-
         [data-illu] {
           transform: scale(0);
         }
       }
+
+      @include min($responsiveNav) {
+        .bottom {
+          transform: scale(0.5) translateY(-90%);
+        }
+
+        .logo {
+          transform: translateY(-35%);
+          left: 19%;
+        }
+      }
     }
 
-    .corner {
-      opacity: 0;
-      transform: scale(0);
+    @include min($responsiveNav) {
+      .corner {
+        opacity: 0;
+        transform: scale(0);
+      }
     }
   }
 }
@@ -46,12 +52,20 @@
   @include max(1380px) {
     width: 100vw;
   }
+
+  @include max($responsiveNav) {
+    justify-content: flex-start;
+  }
 }
 
 .section {
   width: 50%;
   height: 100%;
   overflow: hidden;
+
+  @include max($responsiveNav) {
+    display: none;
+  }
 
   .back {
     position: absolute;
@@ -93,6 +107,10 @@
   filter: drop-shadow(0 0 10px var(--color, var(--primary)));
   pointer-events: none;
 
+  @include max($responsiveNav) {
+    display: none;
+  }
+
   &.br {
     left: 89.3%;
     top: 85.5%;
@@ -117,20 +135,27 @@
 }
 
 .middle {
-  position: absolute;
   width: var(--middle);
   height: var(--middle-height);
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
+
+  @include min($responsiveNav) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+  }
 
   .logo {
     transition: transform var(--transition-fix), left var(--transition-fix),
       width var(--transition-fix);
     z-index: 10;
-    width: 100%;
-    left: 2%;
-    transform: translateY(-15%);
+    width: 90%;
+    left: 8%;
+    transform: translateY(-10%);
+
+    @include max($responsiveNav) {
+      left: 2%;
+    }
 
     [data-illu] {
       transform-origin: center;
@@ -145,6 +170,10 @@
     top: var(--height);
     height: calc(var(--middle-height) - var(--height));
     perspective: var(--middle);
+
+    @include max($responsiveNav) {
+      display: none;
+    }
 
     &::before,
     &::after {
@@ -184,4 +213,8 @@
   inset: 0 0 -100%;
   z-index: -1;
   background: linear-gradient(to bottom, var(--body), rgba(var(--body-rgb), 0));
+
+  @include max($responsiveNav) {
+    bottom: -150%;
+  }
 }
