@@ -52,6 +52,8 @@ export const Button = ({
   )
 
   const attrs = {
+    "data-reverse": reverse,
+    "data-icon": icon,
     className: classNames,
     onClick,
     disabled

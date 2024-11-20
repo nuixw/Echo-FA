@@ -1,6 +1,7 @@
 @import "styles/mixins";
 
 .nav {
+  --transition-sub: 0.2s;
   @include flex;
   z-index: 100;
   position: absolute;
@@ -13,15 +14,27 @@
     border-left: 1px solid blue;
   }
 
-  ul {
+  & > ul {
     @include flex;
     width: 100%;
     white-space: nowrap;
     padding: 0 3em;
 
-    li {
+    & > li {
       @include flex;
       flex: 1 auto;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: -15px 0;
+      }
+
+      &:hover {
+        .sub {
+          @include auto-alpha(1);
+        }
+      }
     }
   }
 
@@ -55,15 +68,35 @@
   }
 
   .sub {
+    transition: opacity var(--transition-sub), visibility var(--transition-sub);
+    @include auto-alpha(0);
+    --padding: 0.75em;
     position: absolute;
-    top: 100%;
+    top: 120%;
+    min-width: 120%;
+    left: 50%;
     display: flex;
     flex-direction: column;
-    min-width: 100%;
-    border: 1px solid red;
+    justify-content: stretch;
+    padding: var(--padding);
+    gap: var(--size-2);
+    width: auto;
+    border: 1px solid var(--bg-opacity-1);
+    border-radius: var(--angle-radius);
+    background-color: var(--bg-opacity-1);
+    box-shadow: var(--shadow-2);
+    @include backdrop;
+    transform: translateX(-50%);
 
     li {
+      display: flex;
       width: 100%;
+
+      .item {
+        display: flex;
+        width: 100%;
+        padding: 0 0.25em;
+      }
     }
   }
 }

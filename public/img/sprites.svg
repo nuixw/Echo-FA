@@ -6,14 +6,14 @@
     <g id="line-1">
       <path d="M0 78C2.33333 61.3333 7 26.8 7 22V67L196 0L0 78Z" />
     </g>
-    <g id="line-2">
+    <g id="line-right">
       <path d="M0 0L460 189L443.571 162.346L0 0Z"/>
     </g>
-    <g id="line-3">
-    <path d="M460 0L0 189L16.4286 162.346L460 0Z"/>
+    <g id="line-left">
+      <path d="M460 0L0 189L16.4286 162.346L460 0Z"/>
     </g>
     <g id="corner">
-    <path d="M34.5 25.5H0.5L35.5 27L52.5 0.5L34.5 25.5Z"/>
+      <path d="M34.5 25.5H0.5L35.5 27L52.5 0.5L34.5 25.5Z"/>
     </g>
     <g id="corner-bottom-right">
       <use href="#corner"/>

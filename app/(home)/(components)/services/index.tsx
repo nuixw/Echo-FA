@@ -1,6 +1,7 @@
 "use client"
 
 import { Japan, Sub, Wrapper } from "@/components/kit"
+import { Line } from "@/components/line"
 import { Sprite } from "@/components/sprite"
 import { APP_NAME } from "@/config/app"
 import { stripTags } from "@/libs/utils"
@@ -174,6 +175,29 @@ export const Services = () => {
       <div className={s.bg}>
         <div />
       </div>
+      <Line
+        direction="right"
+        color="primary"
+        zIndex={1500}
+        top={35}
+        width={25}
+      />
+      <Line
+        direction="right"
+        color="primary"
+        zIndex={5}
+        top={15}
+        width={20}
+        right={21}
+      />
+      <Line
+        direction="right"
+        color="secondary"
+        zIndex={5}
+        top={13}
+        width={20}
+        right={23}
+      />
     </div>
   )
 }

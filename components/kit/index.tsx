@@ -27,6 +27,7 @@ const Japan = ({ className, ...props }: ElementProps) => (
   <BaseElement
     {...props}
     aria-hidden="true"
+    translate="no"
     className={clsx(styles.japan, className)}
   />
 )

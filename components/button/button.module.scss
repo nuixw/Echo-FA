@@ -26,8 +26,13 @@
 
   &.reverse {
     transform: scaleX(-1);
+    flex-direction: row-reverse;
 
     span {
+      transform: scaleX(-1);
+    }
+
+    svg {
       transform: scaleX(-1);
     }
   }
@@ -50,6 +55,11 @@
     border-radius: 50%;
     pointer-events: none;
     @include blur(16px);
+  }
+
+  &[data-icon] {
+    gap: 0.5em;
+    justify-content: space-between;
   }
 }
 

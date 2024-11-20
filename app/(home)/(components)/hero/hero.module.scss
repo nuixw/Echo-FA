@@ -193,9 +193,8 @@
 
 .bg {
   position: absolute;
-  inset: 0;
+  inset: 0 0 10%;
   overflow: hidden;
-  max-height: 120vh;
 
   &::after,
   &::before {

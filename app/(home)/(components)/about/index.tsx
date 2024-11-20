@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/button"
 import { Japan, Sub, Wrapper } from "@/components/kit"
+import { Line } from "@/components/line"
 import { Palmier } from "@/components/palmier"
 import { APP_NAME } from "@/config/app"
 import { useGSAP } from "@gsap/react"
@@ -83,6 +84,28 @@ export const About = () => {
           quality={100}
           draggable={false}
           sizes="(max-width: 500px) 350px, (max-width: 768px)  450px, (max-width: 900px) 550px, 667px"
+        />
+        <Line
+          direction="right"
+          color="primary"
+          zIndex={1500}
+          top={53}
+          width={30}
+        />
+        <Line
+          direction="right"
+          color="secondary"
+          zIndex={1500}
+          top={50}
+          width={45}
+        />
+        <Line
+          direction="right"
+          color="primary"
+          zIndex={-1}
+          top={25}
+          width={50}
+          right={20}
         />
       </div>
       <div className={s.bg}>

@@ -2,27 +2,32 @@
 
 .marquee {
   display: flex;
-  align-items: stretch;
   overflow: hidden;
   white-space: nowrap;
   line-height: 1.2;
-  user-select: none;
+  @include user-select;
 
   &.right {
+    align-items: stretch;
     justify-content: flex-end;
   }
 
   &.left {
+    align-items: stretch;
     justify-content: flex-start;
   }
 
   &.up {
+    align-items: flex-start;
+
     .content {
       flex-direction: column;
     }
   }
 
   &.down {
+    align-items: flex-end;
+
     .content {
       flex-direction: column-reverse;
     }

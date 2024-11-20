@@ -1,4 +1,5 @@
 import { About } from "./(components)/about"
+import { Gallery } from "./(components)/gallery"
 import { Hero } from "./(components)/hero"
 import { Services } from "./(components)/services"
 import { Words } from "./(components)/words"
@@ -10,56 +11,7 @@ export default function Page() {
       <Words />
       <Services />
       <About />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <Gallery />
       <br />
       <br />
       <br />

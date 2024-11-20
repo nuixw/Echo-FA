@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/button"
 import { Japan, Sub, Wrapper } from "@/components/kit"
+import { Line } from "@/components/line"
 import { Palmier } from "@/components/palmier"
 import { Sprite } from "@/components/sprite"
 import { APP_NAME } from "@/config/app"
@@ -37,7 +38,7 @@ export const Hero = () => {
     ).to(
       `.${s.content}`,
       {
-        y: "25%",
+        y: "15%",
         ease: "none"
       },
       "a"
@@ -98,6 +99,29 @@ export const Hero = () => {
         <div className={s.bg}>
           <div />
         </div>
+        <Line
+          direction="left"
+          color="primary"
+          zIndex={100}
+          top={47}
+          width={30}
+        />
+        <Line
+          direction="left"
+          color="primary"
+          zIndex={5}
+          top={20}
+          width={20}
+          left={21}
+        />
+        <Line
+          direction="left"
+          color="secondary"
+          zIndex={5}
+          top={20}
+          width={20}
+          left={25}
+        />
       </div>
       <Palmier className={s.palmier} />
     </>

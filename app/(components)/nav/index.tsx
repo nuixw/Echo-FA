@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/button"
+import { IconName } from "@/config/icons"
 import { DirectionHorizontal } from "@/types/Direction"
 import clsx from "clsx"
 import { usePathname } from "next/navigation"
@@ -11,9 +12,10 @@ interface NavLinkProps {
   href: string
   side: DirectionHorizontal
   sub?: boolean
+  icon?: IconName
 }
 
-const NavLink = ({ label, href, side, sub }: NavLinkProps) => {
+const NavLink = ({ label, href, side, sub, icon }: NavLinkProps) => {
   const pathname = usePathname()
   const reverse = side === "right"
   const className = clsx(
@@ -28,7 +30,12 @@ const NavLink = ({ label, href, side, sub }: NavLinkProps) => {
           {label}
         </Button>
       ) : (
-        <Button href={!sub && href} reverse={reverse} className={className}>
+        <Button
+          href={!sub && href}
+          reverse={!sub && reverse}
+          className={className}
+          icon={icon}
+        >
           {label}
         </Button>
       )}
@@ -57,7 +64,12 @@ const List = ({ list, side }: ListProps) => {
               <ul className={s.sub}>
                 {item.sub.map((sub) => (
                   <li key={sub.href}>
-                    <NavLink href={sub.href} label={sub.label} side={side} />
+                    <NavLink
+                      href={sub.href}
+                      label={sub.label}
+                      side={side}
+                      icon={sub.icon}
+                    />
                   </li>
                 ))}
               </ul>
@@ -76,6 +88,7 @@ interface NavItem {
   left?: boolean
   right?: boolean
   sub?: Omit<NavItem, DirectionHorizontal>[]
+  icon?: IconName
 }
 
 export const Nav = () => {
@@ -105,6 +118,10 @@ export const Nav = () => {
         {
           label: "Code pénal",
           href: "/code-penal"
+        },
+        {
+          label: "FAQ",
+          href: "/faq"
         }
       ]
     },
@@ -121,7 +138,34 @@ export const Nav = () => {
     {
       label: "Socials",
       href: "/socials",
-      right: true
+      right: true,
+      sub: [
+        {
+          label: "TikTok",
+          href: "https://tiktok.com",
+          icon: "tiktok"
+        },
+        {
+          label: "Youtube",
+          href: "https://youtube.com",
+          icon: "youtube"
+        },
+        {
+          label: "Twitter",
+          href: "https://x.com",
+          icon: "twitter"
+        },
+        {
+          label: "Twitch",
+          href: "https://twitch.com",
+          icon: "twitch"
+        },
+        {
+          label: "Instagram",
+          href: "https://instagram.com",
+          icon: "instagram"
+        }
+      ]
     },
     {
       label: "Voter",

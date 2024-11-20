@@ -19,7 +19,7 @@ export const Wrapper = ({ children }: WrapperProps) => {
 
   const lenis = useLenis()
 
-  // lenis?.scrollTo(1300, {})
+  lenis?.scrollTo(5000, { duration: 0.1 })
 
   return (
     <>

@@ -1,0 +1,35 @@
+@import "styles/mixins";
+
+.line {
+  position: absolute;
+  pointer-events: none;
+  @include user-select(none);
+
+  @include max(600px) {
+    display: none;
+  }
+}
+
+.primary {
+  fill: var(--primary);
+}
+
+.secondary {
+  fill: var(--secondary);
+}
+
+.tertiary {
+  fill: var(--tertiary);
+}
+
+.quaternary {
+  fill: var(--quaternary);
+}
+
+.right {
+  right: -5%;
+}
+
+.left {
+  left: -5%;
+}

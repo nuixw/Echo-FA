@@ -4,8 +4,8 @@
   },
   "Seo": {
     "Home": {
-      "title": "Accueil",
-      "description": "Ceci est la page d'accueil de l'exemple next-intl avec Auth.js."
+      "title": "Serveur RP GTA V Nouvelle Ère | Communauté RP 100% Custom",
+      "description": "Rejoignez le premier serveur RP GTA V français dédié aux joueurs. Scripts customs, communauté respectueuse et développeurs expérimentés vous attendent pour une expérience RP unique."
     }
   },
   "Home": {
@@ -62,6 +62,13 @@
       "p1": "Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium.",
       "p2": "Saltus erexit et cautos. Haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo.",
       "join": "Nous rejoindre"
+    },
+    "Gallery": {
+      "sub": "Découvrir",
+      "title": {
+        "line1": "Galerie",
+        "line2": "Photos"
+      }
     }
   }
 }
