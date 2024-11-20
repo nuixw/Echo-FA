@@ -3,7 +3,6 @@
 import { LENIS } from "@/config/constants"
 import { useRealViewport } from "@/hooks/useRealViewport"
 import { useReveal } from "@/hooks/useReveal"
-import { useLenis } from "@/libs/lenis"
 import { GSAP } from "../gsap"
 import { Header } from "../header"
 import { Lenis } from "../lenis"
@@ -17,9 +16,9 @@ export const Wrapper = ({ children }: WrapperProps) => {
   useReveal()
   useRealViewport()
 
-  const lenis = useLenis()
+  // const lenis = useLenis()
 
-  lenis?.scrollTo(5000, { duration: 0.1 })
+  // lenis?.scrollTo(5000, { duration: 0.1 })
 
   return (
     <>
