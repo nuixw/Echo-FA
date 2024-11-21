@@ -22,6 +22,7 @@
   text-align: center;
   background-color: var(--bg-color);
   color: var(--color);
+  cursor: pointer;
   @include user-select;
 
   &.reverse {

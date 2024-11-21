@@ -4,6 +4,7 @@
   /* Transition */
   --transition-link: 0.25s var(--cubic);
   --transition-scale: 0.1s;
+  --transition-nav: 0.4s var(--cubic);
 
   /* Viewport */
   --real-height: calc(var(--dvh, 1vh) * 100);
@@ -27,6 +28,7 @@
 
   /* Main */
   --main-padding: calc(32px + 24 * (100vw - 320px) / 1080);
+  --main-top: calc(100px + 80 * (100vw - 320px) / 1080);
 
   /* Angle */
   --angle: 40deg;

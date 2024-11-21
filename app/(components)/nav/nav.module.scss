@@ -2,16 +2,29 @@
 
 .nav {
   --transition-sub: 0.2s;
-  @include flex;
+  --width-responsive: calc(280px + 100 * (100vw - 320px) / 1080);
+  display: flex;
   z-index: 100;
   position: absolute;
   left: 0;
   width: 100%;
 
+  @include min($responsiveNav) {
+    pointer-events: none;
+
+    a,
+    button {
+      pointer-events: auto;
+    }
+  }
+
   .separator {
     transition: min-width var(--transition-fix);
     min-width: var(--spacing);
-    border-left: 1px solid blue;
+
+    @include max($responsiveNav) {
+      display: none;
+    }
   }
 
   & > ul {
@@ -21,25 +34,90 @@
     padding: 0 3em;
 
     & > li {
+      pointer-events: auto;
       @include flex;
-      flex: 1 auto;
 
-      &::before {
-        content: "";
-        position: absolute;
-        inset: -15px 0;
+      @include min($responsiveNav) {
+        flex: 1;
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: -15px 0;
+        }
+
+        &:hover {
+          .sub {
+            @include auto-alpha(1);
+          }
+        }
       }
 
-      &:hover {
-        .sub {
-          @include auto-alpha(1);
-        }
+      @include max($responsiveNav) {
+        width: 100%;
       }
     }
   }
 
   @include max($responsiveNav) {
-    display: none;
+    transition: transform var(--transition-nav);
+    z-index: 9000;
+    position: fixed;
+    inset: 0 0 0 auto;
+    height: var(--real-height);
+    width: var(--width-responsive);
+    background-color: rgba(var(--body-rgb), 0.75);
+    @include backdrop;
+    transform: translateX(100%);
+    box-shadow: var(--shadow-1);
+
+    &.open {
+      transform: translateX(0);
+
+      &::before {
+        opacity: 1;
+      }
+
+      & + .bnav {
+        transform: rotate(180deg);
+
+        .button {
+          --color: var(--secondary);
+        }
+      }
+    }
+
+    &::before {
+      transition: opacity var(--transition-nav);
+      pointer-events: none;
+      opacity: 0;
+      content: "";
+      position: absolute;
+      top: 0;
+      right: var(--width-responsive);
+      width: 100vw;
+      height: 100%;
+      background: linear-gradient(to left, var(--body), transparent);
+    }
+
+    & > ul {
+      flex-direction: column;
+      height: 100%;
+      padding-top: calc(var(--main-padding) * 2);
+      overflow-y: auto;
+      @include mask(
+        linear-gradient(to bottom, transparent 5%, var(--body) 20%)
+      );
+      @include no-scrollbar;
+
+      & > li {
+        flex-direction: column;
+
+        &:nth-child(6) {
+          display: none !important;
+        }
+      }
+    }
   }
 
   .item {
@@ -61,32 +139,58 @@
 
     &.active {
       color: var(--primary);
+
       &::after {
         opacity: 1;
+      }
+    }
+
+    @include max($responsiveNav) {
+      background-color: transparent;
+      border: 0;
+      font-size: calc(24px + 8 * (100vw - 320px) / 1080);
+      text-align: right;
+      justify-content: flex-end;
+      padding: 0 !important;
+      height: 2.5em !important;
+
+      & > div,
+      &::after,
+      &::before {
+        display: none !important;
       }
     }
   }
 
   .sub {
     transition: opacity var(--transition-sub), visibility var(--transition-sub);
-    @include auto-alpha(0);
     --padding: 0.75em;
-    position: absolute;
-    top: 120%;
-    min-width: 120%;
-    left: 50%;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
-    padding: var(--padding);
     gap: var(--size-2);
-    width: auto;
-    border: 1px solid var(--bg-opacity-1);
-    border-radius: var(--angle-radius);
-    background-color: var(--bg-opacity-1);
-    box-shadow: var(--shadow-2);
-    @include backdrop;
-    transform: translateX(-50%);
+    width: 100%;
+    pointer-events: auto;
+
+    @include min($responsiveNav) {
+      @include auto-alpha(0);
+      position: absolute;
+      top: 120%;
+      min-width: 120%;
+      left: 50%;
+      padding: var(--padding);
+      border: 1px solid var(--bg-opacity-1);
+      border-radius: var(--angle-radius);
+      background-color: var(--bg-opacity-1);
+      box-shadow: var(--shadow-2);
+      @include backdrop;
+      transform: translateX(-50%);
+      width: auto;
+    }
+
+    @include max($responsiveNav) {
+      gap: 0px;
+    }
 
     li {
       display: flex;
@@ -96,6 +200,45 @@
         display: flex;
         width: 100%;
         padding: 0 0.25em;
+
+        @include max($responsiveNav) {
+          font-size: calc(16px + 4 * (100vw - 320px) / 1080);
+          padding: 0 !important;
+          margin: 0 !important;
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+
+.bnav {
+  transition: transform var(--transition-nav) !important;
+  z-index: 9500;
+  position: fixed;
+  top: var(--main-padding);
+  right: var(--main-padding);
+
+  @include min($responsiveNav) {
+    display: none;
+  }
+
+  .button {
+    transition: var(--transition-nav) !important;
+    padding: 0 8px !important;
+    font-size: calc(10px + 4 * (100vw - 320px) / 1080) !important;
+    transform: rotate(0deg);
+
+    &::after,
+    &::before {
+      transition: var(--transition-nav) !important;
+    }
+
+    svg {
+      transform: scale(2) !important;
+
+      * {
+        stroke-width: 1 !important;
       }
     }
   }

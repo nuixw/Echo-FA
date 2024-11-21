@@ -36,7 +36,7 @@ export const Hero = () => {
       },
       "a"
     ).to(
-      `.${s.content}`,
+      `.${s.illu} img`,
       {
         y: "15%",
         ease: "none"
@@ -75,23 +75,23 @@ export const Hero = () => {
                   />
                 </span>
               </h1>
-              <div className={s.btn}>
-                <Button reverse>{t("discover")}</Button>
-                <Button reverse secondary>
-                  {t("join")}
-                </Button>
-              </div>
             </div>
           </div>
-          <div className={s.girl}>
+          <div className={s.btn}>
+            <Button reverse>{t("discover")}</Button>
+            <Button reverse secondary>
+              {t("join")}
+            </Button>
+          </div>
+          <div className={s.illu}>
             <Image
-              src="/img/home-hero-girl.webp"
+              src="/img/home-hero-car.webp"
               alt={APP_NAME}
-              width={667}
-              height={1223}
+              width={1725}
+              height={1100}
+              sizes="(max-width: 600px) 600px, (max-width: 1200px) 1200px, 1725px"
               quality={100}
               draggable={false}
-              sizes="(max-width: 500px) 350px, (max-width: 768px)  450px, (max-width: 900px) 550px, 667px"
               priority
             />
           </div>

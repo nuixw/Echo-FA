@@ -4,7 +4,7 @@ import { Hero } from "./(components)/hero"
 import { Services } from "./(components)/services"
 import { Words } from "./(components)/words"
 
-export default function Page() {
+export default async function Page() {
   return (
     <>
       <Hero />
@@ -12,12 +12,6 @@ export default function Page() {
       <Services />
       <About />
       <Gallery />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </>
   )
 }

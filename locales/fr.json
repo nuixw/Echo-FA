@@ -8,6 +8,10 @@
       "description": "Rejoignez le premier serveur RP GTA V français dédié aux joueurs. Scripts customs, communauté respectueuse et développeurs expérimentés vous attendent pour une expérience RP unique."
     }
   },
+  "Footer": {
+    "copyright": "Tous droits réservés.",
+    "approuve": "{name} n'est pas approuvé ou sponsorisé par Rockstar Games."
+  },
   "Home": {
     "Hero": {
       "sub": "Serveur rôleplay GTA V",

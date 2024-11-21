@@ -1,15 +1,20 @@
+"use client"
+
 import { Logo } from "@/components/logo"
 import { Sprite } from "@/components/sprite"
 import useScroll from "@/hooks/useScroll"
 import clsx from "clsx"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Nav } from "../nav"
 import s from "./header.module.scss"
 
 export const Header = () => {
   const { y } = useScroll()
+  const pathname = usePathname()
 
   return (
-    <header className={clsx(s.header, y > 50 && s.fix)}>
+    <header className={clsx(s.header, (y > 50 || pathname !== "/") && s.fix)}>
       <div className={s.wrapper}>
         <Nav />
         <div className={clsx(s.section, s.left)}>
@@ -18,8 +23,9 @@ export const Header = () => {
         <div className={clsx(s.section, s.right)}>
           <div className={s.back} />
         </div>
-        <div className={s.middle}>
+        <Link href="/" className={s.middle}>
           <Logo className={s.logo} />
+          <Sprite id="fr" viewBox="0 0 38 28" className={s.fr} />
           <Sprite
             id="corner-bottom-right"
             viewBox="0 0 53 27"
@@ -41,7 +47,7 @@ export const Header = () => {
             className={clsx(s.corner, s.tl)}
           />
           <div className={s.bottom} />
-        </div>
+        </Link>
       </div>
       <div className={s.shadow} />
     </header>

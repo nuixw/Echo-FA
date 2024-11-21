@@ -16,56 +16,73 @@
 
 .wrapper {
   width: var(--wrapper-header);
+  padding-top: calc(100px + 50 * (100vw - 320px) / 1080);
+  padding-bottom: calc(150px + 150 * (100vw - 320px) / 1080);
+
+  @include max(600px) {
+    padding-bottom: 0;
+  }
 }
 
-.girl {
-  width: 48%;
-  min-width: 430px;
-  padding-top: 15vh;
-  overflow: hidden;
-  @include user-select;
+.illu {
+  position: absolute;
+  right: 28vw;
+  height: 100%;
   z-index: 10;
   pointer-events: none;
+  @include user-select;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 6%;
+  overflow: hidden;
 
-  @include max(950px) {
-    left: -10vw;
+  img {
+    width: auto;
+    height: 80%;
+    top: 20%;
+    right: 5%;
   }
 
   @include max(600px) {
-    left: 0;
-    width: 40%;
-    min-width: 350px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 6vh;
-  }
+    position: relative;
+    right: 0;
+    margin-top: var(--main-padding);
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
 
-  img {
-    width: 100%;
-    margin-bottom: -15vh;
+    img {
+      width: 900px;
+      min-width: 900px;
+    }
   }
 }
 
 .content {
   font-family: var(--font-primary);
   font-weight: 800;
+  width: 50%;
+  left: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-  @include min(600px) {
-    position: absolute;
-    padding-top: 15%;
-    left: 50%;
+  @include max(600px) {
+    left: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 .heading {
   --size: calc(200px + 150 * (100vw - 320px) / 1080);
-  left: -40%;
+  left: 0%;
   padding-top: calc(80px + 40 * (100vw - 320px) / 1080);
   text-transform: uppercase;
-
-  @include max(1080px) {
-    left: -30%;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
   @include max(700px) {
     left: -15%;
@@ -78,7 +95,8 @@
   @include max(600px) {
     text-align: center;
     left: 0;
-    padding-top: calc(200px + 180 * (100vw - 320px) / 1080);
+    width: 100%;
+    align-items: center;
   }
 }
 
@@ -178,16 +196,19 @@
 }
 
 .btn {
-  left: 50%;
+  left: 55%;
   margin-top: calc(24px + 8 * (100vw - 320px) / 1080);
+  z-index: 10000;
 
   @include max(700px) {
-    left: 12%;
+    left: 40%;
   }
 
   @include max(600px) {
+    display: flex;
     left: 0%;
     margin-top: calc(42px + 24 * (100vw - 320px) / 1080);
+    justify-content: center;
   }
 }
 

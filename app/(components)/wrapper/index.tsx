@@ -3,6 +3,7 @@
 import { LENIS } from "@/config/constants"
 import { useRealViewport } from "@/hooks/useRealViewport"
 import { useReveal } from "@/hooks/useReveal"
+import { Footer } from "../footer"
 import { GSAP } from "../gsap"
 import { Header } from "../header"
 import { Lenis } from "../lenis"
@@ -17,7 +18,6 @@ export const Wrapper = ({ children }: WrapperProps) => {
   useRealViewport()
 
   // const lenis = useLenis()
-
   // lenis?.scrollTo(5000, { duration: 0.1 })
 
   return (
@@ -25,7 +25,10 @@ export const Wrapper = ({ children }: WrapperProps) => {
       <GSAP scrollTrigger={true} />
       <Lenis root options={LENIS} />
       <Header />
-      <main className={s.main}>{children}</main>
+      <div className={s.main}>
+        <main>{children}</main>
+        <Footer />
+      </div>
     </>
   )
 }

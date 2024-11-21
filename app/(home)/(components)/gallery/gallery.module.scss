@@ -183,6 +183,7 @@ $responsive: 1084px;
 
   .img {
     margin-bottom: var(--gap);
+    aspect-ratio: 80 / 45;
 
     &::before {
       content: "";

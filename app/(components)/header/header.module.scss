@@ -23,6 +23,14 @@
         }
       }
 
+      .fr {
+        transform: scale(0.8) translate(-100%, -500%) rotate(3deg);
+
+        @include max($responsiveNav) {
+          transform: scale(0.8) translate(-210%, -260%) rotate(3deg);
+        }
+      }
+
       @include min($responsiveNav) {
         .bottom {
           transform: scale(0.5) translateY(-90%);
@@ -160,6 +168,20 @@
     [data-illu] {
       transform-origin: center;
       transition: opacity var(--transition-fix), transform var(--transition-fix);
+    }
+  }
+
+  .fr {
+    transition: transform var(--transition-fix);
+    position: absolute;
+    z-index: 100;
+    width: 12%;
+    top: 87%;
+    left: 80%;
+
+    @include max($responsiveNav) {
+      top: 85%;
+      left: 74%;
     }
   }
 

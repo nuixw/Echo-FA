@@ -1,0 +1,59 @@
+@import "styles/mixins";
+
+.heading {
+  padding-top: var(--main-top);
+  padding-bottom: calc(var(--main-top) / 2);
+  text-align: center;
+}
+
+.sub {
+  margin-bottom: 1em;
+}
+
+.title {
+  font-size: calc(40px + 80 * (100vw - 320px) / 1080);
+  text-transform: uppercase;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  line-height: 0.9;
+
+  strong {
+    color: var(--primary);
+    font-weight: inherit;
+  }
+}
+
+.bg {
+  position: absolute;
+  inset: 0 0;
+  overflow: hidden;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+  }
+
+  &::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--body-rgb), 0.95) 10%,
+      rgba(var(--body-rgb), 0)
+    );
+  }
+
+  &::after {
+    top: 50%;
+    background: linear-gradient(to top, var(--body), rgba(var(--body-rgb), 0));
+  }
+
+  & > div {
+    position: absolute;
+    inset: 0;
+    background: url("/img/home-hero-bg.webp") no-repeat center center / cover;
+    will-change: transform;
+    opacity: 0;
+  }
+}
