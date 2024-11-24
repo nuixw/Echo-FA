@@ -5,7 +5,8 @@ export const ICONS = {
   twitter: "hugeicons:new-twitter",
   twitch: "hugeicons:twitch",
   instagram: "hugeicons:instagram",
-  menu: "hugeicons:menu-01"
+  menu: "hugeicons:menu-01",
+  arrowDown: "hugeicons:arrow-down-01"
 } as const
 
 export type IconName = keyof typeof ICONS

@@ -1,10 +1,13 @@
 @import "styles/mixins";
 
 .main {
-  overflow: hidden;
   min-height: var(--real-height);
   display: flex;
   flex-direction: column;
+
+  &.home {
+    overflow: hidden;
+  }
 
   main {
     flex: 1;

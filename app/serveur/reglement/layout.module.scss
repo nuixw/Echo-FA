@@ -1,0 +1,92 @@
+@import "styles/mixins";
+
+.layout {
+  --aside: calc(200px + 50 * (100vw - 320px) / 1080);
+  --aside-padding: calc(16px + 8 * (100vw - 320px) / 1080);
+  --content-padding: calc(24px + 16 * (100vw - 320px) / 1080);
+  padding: var(--main-top) 0;
+  width: 100vw;
+
+  @include max(1400px) {
+    --aside: calc(180px + 40 * (100vw - 320px) / 1080);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: calc(50vw - var(--wrapper-header) / 2 + var(--aside));
+    right: calc(50vw + var(--wrapper-header) / 2 - var(--aside));
+    background: linear-gradient(to left, #010716, transparent);
+    border-right: 1px solid var(--bg-opacity-3);
+    z-index: 0;
+
+    @include mask(
+      linear-gradient(to bottom, transparent 0%, #000 10% 80%, transparent 100%)
+    );
+
+    @include max(1400px) {
+      width: calc(50vw - var(--wrapper-max) / 2 + var(--aside));
+      left: 0;
+      right: auto;
+    }
+
+    @include max(1084px) {
+      display: none;
+    }
+  }
+
+  .wrapper {
+    width: var(--wrapper-header);
+    max-width: var(--wrapper-max);
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.content {
+  width: 100%;
+
+  @include min(1084px) {
+    width: calc(100% - var(--aside));
+    padding-left: var(--content-padding);
+  }
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  height: calc(400px + 200 * (100vw - 320px) / 1080);
+  overflow: hidden;
+  z-index: -1;
+  opacity: 0.5;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+  }
+
+  &::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--body-rgb), 0.95) 10%,
+      rgba(var(--body-rgb), 0)
+    );
+  }
+
+  &::after {
+    top: 50%;
+    background: linear-gradient(to top, var(--body), rgba(var(--body-rgb), 0));
+  }
+
+  & > div {
+    position: absolute;
+    inset: 0;
+    background: url("/img/home-hero-bg.webp") no-repeat center center / cover;
+    will-change: transform;
+  }
+}

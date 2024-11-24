@@ -32,11 +32,10 @@
       var(--body),
       rgba(var(--body-rgb), 0)
     );
-    bottom: 30%;
+    bottom: 50%;
   }
 
   &::after {
-    top: 30%;
     background: linear-gradient(to top, var(--body), rgba(var(--body-rgb), 0));
   }
 

@@ -4,6 +4,7 @@ import "@/styles/globals.scss"
 import { Viewport } from "next"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale, getMessages } from "next-intl/server"
+import NextTopLoader from "nextjs-toploader"
 import { Wrapper } from "./(components)/wrapper"
 import { fonts } from "./fonts"
 
@@ -26,6 +27,12 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir="ltr" suppressHydrationWarning={true}>
       <body className={fonts} suppressHydrationWarning={true}>
+        <NextTopLoader
+          color="var(--primary)"
+          height={1}
+          showSpinner={false}
+          zIndex={9999999}
+        />
         <NextIntlClientProvider messages={messages}>
           <Wrapper>{children}</Wrapper>
         </NextIntlClientProvider>

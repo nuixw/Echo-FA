@@ -1,0 +1,30 @@
+Ce projet est un projet NextJS 14 en Typescript. C'est le projet pour un serveur GTA V Rôle Play Français.
+
+J'utilise comme dépendance principale dans ce projet :
+
+- next-intl
+- next-mdx-remote
+- next-themes
+- nextjs-toploader
+- gsap
+- react-gsap
+- zod
+- zustand
+
+En store nous utilisons Zustand, pour les notifications & toast nous utilisons Sonner
+
+Le site contient une boutique géré via l'API de TEBEX (https://docs.tebex.io/developers/headless-api/overview)
+
+Pour les règlements, nous utilisons le composant mdx de NextJS, pour les règlements il faut créer un fichier mdx avec le nom de la règle, puis le contenu de la règle.
+
+Voici mes règles Prettier :
+
+{ "tabWidth": 2, "useTabs": false, "semi": false, "singleQuote": false, "jsxSingleQuote": false, "trailingComma": "none", "proseWrap": "never", "overrides": [ { "files": "*.mdx", "options": { "parser": "none" } } ] }
+
+Pour les variables d'environnement nous utilisons le package @t3-oss/env-nextjs afin de pouvoir utiliser des variables d'environnement dans le projet correctement.
+
+Pour traiter des données il faut utiliser le package zod afin de pouvoir valider les données.
+
+Nous utilisons lenis pour le scroller, il faut donc ajouter le package lenis dans le projet.
+
+Nous utilisons gsap pour le scroller, il faut donc ajouter le package gsap dans le projet. (avec useGSAP et non useEffect) Il faut également quand tu génère du code gsap, vérifier que les deux imports sont dans le fichier et ajouter si besoin dans tes codes

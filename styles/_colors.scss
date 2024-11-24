@@ -8,13 +8,20 @@
     text-primary: "255, 255, 255",
     text-secondary: "183, 194, 221",
     grey-primary: "51, 60, 102",
-    grey-secondary: "115, 136, 236"
+    grey-secondary: "115, 136, 236",
+    danger-primary: "255, 73, 73",
+    danger-secondary: "243, 152, 153",
+    success-primary: "8, 254, 162",
+    success-secondary: "126, 255, 207"
   );
 
   --bg-opacity-1: rgba(var(--grey-primary-rgb), 0.1);
   --bg-opacity-2: rgba(var(--grey-secondary-rgb), 0.15);
   --bg-opacity-3: rgba(var(--grey-secondary-rgb), 0.05);
+  --bg-opacity-4: rgba(var(--grey-primary-rgb), 0.065);
 
+  --bg-danger-1: rgba(var(--danger-primary-rgb), 0.1);
+  --bg-success-1: rgba(var(--success-primary-rgb), 0.1);
   @each $color, $rgb in $colors {
     --#{$color}-rgb: #{$rgb};
     --#{$color}: rgb(var(--#{$color}-rgb));

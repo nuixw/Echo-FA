@@ -3,6 +3,9 @@
 import { LENIS } from "@/config/constants"
 import { useRealViewport } from "@/hooks/useRealViewport"
 import { useReveal } from "@/hooks/useReveal"
+import clsx from "clsx"
+import { usePathname } from "next/navigation"
+import { Toaster } from "sonner"
 import { Footer } from "../footer"
 import { GSAP } from "../gsap"
 import { Header } from "../header"
@@ -16,19 +19,24 @@ interface WrapperProps {
 export const Wrapper = ({ children }: WrapperProps) => {
   useReveal()
   useRealViewport()
-
-  // const lenis = useLenis()
-  // lenis?.scrollTo(5000, { duration: 0.1 })
+  const pathname = usePathname()
 
   return (
     <>
       <GSAP scrollTrigger={true} />
       <Lenis root options={LENIS} />
       <Header />
-      <div className={s.main}>
+      <div className={clsx(s.main, pathname === "/" && s.home)}>
         <main>{children}</main>
         <Footer />
       </div>
+      <Toaster
+        position="bottom-right"
+        visibleToasts={3}
+        toastOptions={{
+          className: s.toast
+        }}
+      />
     </>
   )
 }

@@ -26,6 +26,13 @@ $responsive: 1084px;
   }
 }
 
+.palmier {
+  width: 50%;
+  bottom: 0%;
+  left: 78%;
+  z-index: 100;
+}
+
 .wrapper {
   width: var(--wrapper-header);
 }

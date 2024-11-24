@@ -15,7 +15,7 @@ html {
   background-color: var(--body);
   color: var(--text-primary);
   font-size: calc(15px + 1 * (100vw - 320px) / 1080);
-  font-weight: 400;
+  font-weight: 300;
   font-synthesis: none !important;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -34,7 +34,10 @@ body {
 
 body {
   font-family: var(--font-tertiary);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  letter-spacing: -0.005em;
   margin: 0 auto;
+  width: 100vw;
 
   @include min(600px) {
     &::before {

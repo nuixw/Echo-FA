@@ -76,46 +76,48 @@ export const Footer = () => {
   )
 
   return (
-    <footer className={s.footer}>
-      <Wrapper>
-        <ul className={s.menu}>
-          {list.map(({ title, color, list }, i) => (
-            <li
-              key={i}
-              style={{ "--color": `var(--${color})` } as React.CSSProperties}
-            >
-              <h3>{title}</h3>
-              <ul>
-                {list.map(({ label, href }) => (
-                  <li key={href}>
-                    <FooterLink href={href} label={label} />
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </Wrapper>
-      <Wrapper className={s.bottom}>
-        <div className={s.left}>
-          <Logo className={s.logo} />
-          <p>
-            <span>2024-2025. {t("copyright")}</span>
-            <small>{t("approuve", { name: APP_NAME })}</small>
-          </p>
+    <>
+      {pathname === "/" && <Palmier className={s.palmier} />}
+      <footer className={s.footer}>
+        <Wrapper>
+          <ul className={s.menu}>
+            {list.map(({ title, color, list }, i) => (
+              <li
+                key={i}
+                style={{ "--color": `var(--${color})` } as React.CSSProperties}
+              >
+                <h3>{title}</h3>
+                <ul>
+                  {list.map(({ label, href }) => (
+                    <li key={href}>
+                      <FooterLink href={href} label={label} />
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </Wrapper>
+        <Wrapper className={s.bottom}>
+          <div className={s.left}>
+            <Logo className={s.logo} />
+            <p>
+              <span>2024-2025. {t("copyright")}</span>
+              <small>{t("approuve", { name: APP_NAME })}</small>
+            </p>
+          </div>
+          <div className={s.right}>
+            {SOCIALS.map(({ href, icon, label }) => (
+              <Link key={href} href={href} title={label}>
+                <Icon icon={icon} />
+              </Link>
+            ))}
+          </div>
+        </Wrapper>
+        <div className={s.bg}>
+          <div />
         </div>
-        <div className={s.right}>
-          {SOCIALS.map(({ href, icon, label }) => (
-            <Link key={href} href={href} title={label}>
-              <Icon icon={icon} />
-            </Link>
-          ))}
-        </div>
-      </Wrapper>
-      <Palmier className={s.palmier} />
-      <div className={s.bg}>
-        <div />
-      </div>
-    </footer>
+      </footer>
+    </>
   )
 }

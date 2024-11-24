@@ -1,0 +1,69 @@
+@import "styles/mixins";
+
+.aside {
+  position: sticky;
+  top: var(--main-top);
+  text-align: right;
+  left: 0;
+  width: var(--aside);
+  min-width: var(--aside);
+  padding-right: var(--aside-padding);
+  font-size: calc(14px + 2 * (100vw - 320px) / 1080);
+
+  @include max(1084px) {
+    display: none;
+  }
+
+  nav > ul > li > a {
+    font-weight: 500;
+  }
+
+  ul {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+
+    li {
+      & + li {
+        margin-top: 1.5em;
+      }
+
+      ul {
+        margin-top: 1.5em;
+        padding-bottom: 0.5em;
+        opacity: 0.85;
+
+        & + li {
+          margin-top: 1.25em;
+        }
+      }
+    }
+  }
+
+  a {
+    transition: color 0.2s;
+
+    &::after {
+      transition: opacity 0.2s;
+      content: "";
+      height: 100%;
+      position: absolute;
+      right: calc(var(--aside-padding) * -1);
+      width: 2px;
+      background: var(--primary);
+      opacity: 0;
+    }
+
+    &:hover {
+      color: var(--text-primary);
+    }
+
+    &[data-active="true"] {
+      color: var(--primary);
+      text-shadow: 0 0 24px var(--primary);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

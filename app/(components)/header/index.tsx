@@ -4,7 +4,6 @@ import { Logo } from "@/components/logo"
 import { Sprite } from "@/components/sprite"
 import useScroll from "@/hooks/useScroll"
 import clsx from "clsx"
-import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Nav } from "../nav"
 import s from "./header.module.scss"
@@ -23,7 +22,7 @@ export const Header = () => {
         <div className={clsx(s.section, s.right)}>
           <div className={s.back} />
         </div>
-        <Link href="/" className={s.middle}>
+        <div className={s.middle}>
           <Logo className={s.logo} />
           <Sprite id="fr" viewBox="0 0 38 28" className={s.fr} />
           <Sprite
@@ -47,7 +46,7 @@ export const Header = () => {
             className={clsx(s.corner, s.tl)}
           />
           <div className={s.bottom} />
-        </Link>
+        </div>
       </div>
       <div className={s.shadow} />
     </header>

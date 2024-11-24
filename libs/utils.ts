@@ -10,3 +10,15 @@ export const qsa = (selector: string, scope = document) =>
 export const ref = (id: string) => qs(`[data-ref=${id}]`)
 
 export const stripTags = (str: string) => str.replace(/<[^>]*>/g, "")
+
+export const extractEmoji = (children: React.ReactNode) => {
+  const text = children?.toString() || ""
+  const emojiMatch = text.match(/^([\uD800-\uDBFF][\uDC00-\uDFFF]|\S)\s*(.*)/)
+  const emoji = emojiMatch?.[1] || ""
+  const content = emojiMatch?.[2] || text
+
+  return {
+    emoji,
+    content
+  }
+}

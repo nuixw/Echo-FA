@@ -29,8 +29,7 @@ const tertiary = localFont({
   display: "swap",
   src: [
     {
-      path: "../public/fonts/brockmann/brockmann-regular.woff2",
-      weight: "400",
+      path: "../public/fonts/inter/Inter-roman-var.woff2",
       style: "normal"
     }
   ]

@@ -1,0 +1,12 @@
+@import "styles/mixins";
+
+.page {
+  h1 {
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: calc(40px + 24 * (100vw - 320px) / 1080);
+    margin-bottom: var(--size-4);
+    line-height: 1;
+  }
+}
