@@ -5,9 +5,9 @@ import { Viewport } from "next"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale, getMessages } from "next-intl/server"
 import NextTopLoader from "nextjs-toploader"
+import { Provider } from "./(components)/provider"
 import { Wrapper } from "./(components)/wrapper"
 import { fonts } from "./fonts"
-import { Provider } from "./(components)/provider"
 
 export async function generateMetadata() {
   return MetadataSeo("Seo.Home")

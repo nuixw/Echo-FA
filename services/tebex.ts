@@ -3,10 +3,21 @@
 import { TAGS } from "@/config/constants"
 import { fetcher } from "@/libs/fetcher"
 import {
+  AddToBasketFunction,
+  GetAuthUrlFunction,
+  GetBasketFunction,
+  GetCategoriesFunction,
+  GetCategoryFunction,
+  GetWebstoreDataFunction,
+  RemoveFromBasketFunction,
+  UpdateQuantityFunction
+} from "@/types/Request"
+import {
   TebexAuthUrl,
   TebexBasket,
   TebexCategory,
   TebexData,
+  TebexMessage,
   TebexWebstore
 } from "@/types/Tebex"
 import { cookies } from "next/headers"
@@ -15,9 +26,7 @@ export const getBasketId = async () => {
   return cookies().get("basketId")?.value
 }
 
-export const getBasket = async (
-  basketId: string
-): Promise<TebexBasket | undefined> => {
+export const getBasket: GetBasketFunction = async (basketId) => {
   const response = await fetcher<TebexData<TebexBasket>>(
     `/baskets/${basketId}`,
     {
@@ -34,10 +43,7 @@ export const getBasket = async (
   }
 }
 
-export const getAuthUrl = async (
-  basketId: string,
-  returnUrl: string
-): Promise<TebexAuthUrl[]> => {
+export const getAuthUrl: GetAuthUrlFunction = async (basketId, returnUrl) => {
   const response = await fetcher<TebexAuthUrl[]>(
     `/baskets/${basketId}/auth?returnUrl=${returnUrl}`,
     {
@@ -54,7 +60,7 @@ export const getAuthUrl = async (
   }
 }
 
-export const getWebstoreData = async (): Promise<TebexWebstore | undefined> => {
+export const getWebstoreData: GetWebstoreDataFunction = async () => {
   const response = await fetcher<TebexData<TebexWebstore>>(`/`, {
     next: {
       tags: [TAGS.webstoreData]
@@ -68,10 +74,10 @@ export const getWebstoreData = async (): Promise<TebexWebstore | undefined> => {
   }
 }
 
-export const getCategory = async (
-  categoryId: number,
+export const getCategory: GetCategoryFunction = async (
+  categoryId,
   includePackages = false
-): Promise<TebexCategory | undefined> => {
+) => {
   const response = await fetcher<TebexData<TebexCategory>>(
     `/categories/${categoryId}?includePackages=${(includePackages
       ? 1
@@ -86,10 +92,10 @@ export const getCategory = async (
   }
 }
 
-export const getCategories = async (
+export const getCategories: GetCategoriesFunction = async (
   includePackages = false,
-  checker: (category: TebexCategory) => boolean = () => true
-): Promise<TebexCategory[]> => {
+  checker = () => true
+) => {
   const response = await fetcher<TebexData<TebexCategory[]>>(
     `/categories?includePackages=${(includePackages ? 1 : 0).toString()}`
   )
@@ -101,127 +107,68 @@ export const getCategories = async (
   }
 }
 
-// export async function addToBasket(
-//   basketId: string,
-//   packageId: number,
-//   packageType: PackageType
-// ): Promise<Data<Basket> | Message | undefined> {
-//   const res = await simpleRequest<Data<Basket> | Message>(
-//     `${baseUrl}/baskets/${basketId}/packages`,
-//     {
-//       type: packageType,
-//       package_id: packageId
-//     },
-//     {},
-//     { method: "POST" }
-//   )
+export const addToBasket: AddToBasketFunction = async (
+  basketId,
+  packageId,
+  quantity = 1
+) => {
+  const response = await fetcher<TebexData<TebexBasket> | TebexMessage>(
+    `/baskets/${basketId}/packages`,
+    {
+      body: {
+        package_id: packageId,
+        quantity
+      },
+      method: "POST"
+    }
+  )
 
-//   return res
-// }
+  if (response) {
+    return response
+  } else {
+    return undefined
+  }
+}
 
-// export async function removeFromBasket(
-//   basketId: string,
-//   packageId: number
-// ): Promise<Data<Basket> | Message | undefined> {
-//   const res = await simpleRequest<Data<Basket> | Message>(
-//     `${baseUrl}/baskets/${basketId}/packages/remove`,
-//     {
-//       package_id: packageId
-//     },
-//     {},
-//     { method: "POST" }
-//   )
+export const removeFromBasket: RemoveFromBasketFunction = async (
+  basketId,
+  packageId
+) => {
+  const response = await fetcher<TebexData<TebexBasket> | TebexMessage>(
+    `/baskets/${basketId}/packages/remove`,
+    {
+      body: {
+        package_id: packageId
+      },
+      method: "POST"
+    }
+  )
 
-//   return res
-// }
+  if (response) {
+    return response
+  } else {
+    return undefined
+  }
+}
 
-// export async function updateQuantityInBasket(
-//   basketId: string,
-//   packageId: string,
-//   newQuantity: number
-// ): Promise<Data<Basket> | Message | undefined> {
-//   const res = await simpleRequest<Data<Basket> | Message>(
-//     `${baseUrl}/baskets/${basketId}/packages/${packageId}`,
-//     {
-//       quantity: newQuantity
-//     },
-//     {},
-//     { method: "PUT" }
-//   )
+export const updateQuantityInBasket: UpdateQuantityFunction = async (
+  basketId,
+  packageId,
+  newQuantity
+) => {
+  const response = await fetcher<TebexData<TebexBasket> | TebexMessage>(
+    `/baskets/${basketId}/packages/${packageId}`,
+    {
+      body: {
+        quantity: newQuantity
+      },
+      method: "PUT"
+    }
+  )
 
-//   return res
-// }
-
-// export async function simpleRequest<T>(
-//   url: string,
-//   body?: Record<string, unknown>,
-//   headers?: Record<string, unknown>,
-//   custom?: Record<string, unknown>
-// ): Promise<T | undefined> {
-//   try {
-//     const res = await fetch(url, {
-//       body: body ? JSON.stringify(body) : undefined,
-//       headers: {
-//         "Content-Type": "application/json; charset=UTF8",
-//         ...(headers ? headers : {})
-//       },
-//       method: "GET",
-//       cache: "no-store",
-//       ...(custom ? custom : {})
-//     })
-
-//     return (await res.json()) as T
-//   } catch (e) {
-//     console.warn(e)
-//     return undefined
-//   }
-// }
-
-// export async function getPackages(
-//   query?: string,
-//   basketIdentifier?: string,
-//   ipAddress?: string,
-//   reverse = false
-// ): Promise<Package[]> {
-//   query = query ? query.toLowerCase() : query
-
-//   const res = await simpleRequest<Data<Package[]>>(
-//     `${baseUrl}/accounts/${publicApiKey}/packages${
-//       basketIdentifier ? `?basketIdent=${basketIdentifier}` : ""
-//     }${
-//       ipAddress ? `${basketIdentifier ? "&" : "?"}ipAddress=${ipAddress}` : ""
-//     }`
-//   )
-
-//   if (res) {
-//     const data = res.data
-//     const reshaped = reverse ? data.reverse() : data
-
-//     return reshaped.filter(
-//       (pkg) => query == undefined || pkg.name.toLowerCase().includes(query)
-//     )
-//   } else {
-//     return []
-//   }
-// }
-
-// export async function getPackage(
-//   id: number,
-//   ipAddress?: string
-// ): Promise<Package | undefined> {
-//   const basketIdentifier = cookies().get("basketId")?.value
-
-//   const res = await simpleRequest<Data<Package>>(
-//     `${baseUrl}/accounts/${publicApiKey}/packages/${id}${
-//       basketIdentifier ? `?basketIdent=${basketIdentifier}` : ""
-//     }${
-//       ipAddress ? `${basketIdentifier ? "&" : "?"}ipAddress=${ipAddress}` : ""
-//     }`
-//   )
-
-//   if (res) {
-//     return res.data
-//   } else {
-//     return undefined
-//   }
-// }
+  if (response) {
+    return response
+  } else {
+    return undefined
+  }
+}

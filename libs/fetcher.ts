@@ -5,7 +5,7 @@ const publicApiKey = env.TEBEX_PUBLIC_API_KEY
 
 export const fetcher = async <T = any>(
   url: string,
-  options: RequestInit = {}
+  options: Record<string, any> = {}
 ): Promise<T | undefined> => {
   try {
     const response = await fetch(`${baseUrl}/accounts/${publicApiKey}${url}`, {

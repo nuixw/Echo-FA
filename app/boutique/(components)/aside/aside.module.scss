@@ -1,7 +1,7 @@
 @import "styles/mixins";
 
 .aside {
-  --aside-height: calc(56px + 8 * (100vw - 320px) / 1080);
+  --aside-height: calc(64px + 8 * (100vw - 320px) / 1080);
   @include flex;
   position: fixed;
   bottom: 0;
@@ -10,6 +10,7 @@
   border-radius: var(--angle-radius) var(--angle-radius) 0 0;
   left: 50%;
   transform: translateX(-50%);
+  font-size: calc(var(--aside-height) / 4.3);
 
   & > * {
     z-index: 5;
@@ -26,6 +27,23 @@
 
     .loader {
       opacity: 1;
+    }
+  }
+
+  @include max(800px) {
+    a,
+    button {
+      padding: 0 0.2em;
+
+      span {
+        display: none !important;
+      }
+
+      svg {
+        left: 0 !important;
+        right: 0 !important;
+        font-size: 1.3em;
+      }
     }
   }
 }

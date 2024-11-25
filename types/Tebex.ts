@@ -108,3 +108,6 @@ export interface TebexWebstore {
   platform_type: string
   created_at?: string
 }
+export interface TebexRequestInit extends RequestInit {
+  body?: BodyInit | null | undefined
+}

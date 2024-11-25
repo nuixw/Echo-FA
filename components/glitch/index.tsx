@@ -19,7 +19,7 @@ export const Glitch = ({
   children,
   parent,
   duration = 0.1,
-  repeat = 5
+  repeat = 3
 }: GlitchProps) => {
   const spanRef = useRef<HTMLSpanElement>(null)
   const originalText = children?.toString() || ""
