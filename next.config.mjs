@@ -3,6 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   // Configure pageExtensions to include md and mdx
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"]
   // Optionally, add any other Next.js config below

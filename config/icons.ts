@@ -6,7 +6,13 @@ export const ICONS = {
   twitch: "hugeicons:twitch",
   instagram: "hugeicons:instagram",
   menu: "hugeicons:menu-01",
-  arrowDown: "hugeicons:arrow-down-01"
+  arrowDown: "hugeicons:arrow-down-01",
+  fivem: "simple-icons:fivem",
+  vip: "hugeicons:crown",
+  coins: "hugeicons:coins-01",
+  basket: "hugeicons:shopping-basket-03",
+  logout: "hugeicons:logout-03",
+  loader: "svg-spinners:6-dots-rotate"
 } as const
 
 export type IconName = keyof typeof ICONS

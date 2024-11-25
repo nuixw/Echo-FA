@@ -1,19 +1,16 @@
 import { Wrapper } from "@/components/kit"
-import { getProductCoins, getProductVip } from "@/services/tebex"
-import { Suspense } from "react"
+import { Aside } from "./(components)/aside"
 import s from "./page.module.scss"
 
 export default async function Page() {
-  const vip = await getProductVip()
-  const coins = await getProductCoins()
+  // const coins = await getCategory(Number(env.TEBEX_CATEGORY_COINS), true)
 
   return (
     <div className={s.boutique}>
+      <Aside />
       <Wrapper>
-        <Suspense fallback={<div className={s.loading}>Loading</div>}>
-          <h1>title: {coins?.name}</h1>
-          <h1>title: {vip?.name}</h1>
-          {coins?.packages?.map((product) => (
+        {/* <h1>title: {coins?.name}</h1> */}
+        {/* {coins?.packages?.map((product) => (
             <div key={product.id} className={s.product}>
               <div className={s.productImage}>
                 {product.image && (
@@ -30,8 +27,7 @@ export default async function Page() {
                 </p>
               </div>
             </div>
-          ))}
-        </Suspense>
+          ))} */}
       </Wrapper>
     </div>
   )

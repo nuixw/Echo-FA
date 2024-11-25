@@ -1,0 +1,98 @@
+@import "styles/mixins";
+
+.aside {
+  --aside-height: calc(56px + 8 * (100vw - 320px) / 1080);
+  @include flex;
+  position: fixed;
+  bottom: 0;
+  height: var(--aside-height);
+  z-index: 9000;
+  border-radius: var(--angle-radius) var(--angle-radius) 0 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  & > * {
+    z-index: 5;
+  }
+
+  &.loading {
+    pointer-events: none !important;
+
+    a,
+    button {
+      opacity: 0.5;
+      filter: blur(2px);
+    }
+
+    .loader {
+      opacity: 1;
+    }
+  }
+}
+
+.loader {
+  transition: 0.2s;
+  opacity: 0;
+  position: absolute;
+  z-index: 100;
+  color: var(--primary);
+  width: calc(var(--aside-height) / 2);
+  left: 50%;
+  top: 25%;
+  transform: translateX(-50%);
+}
+
+.triangle {
+  --width: calc(var(--aside-height) * 2);
+  width: var(--width);
+  min-width: var(--width);
+  align-self: flex-end;
+  margin: 0 calc(var(--width) * -0.5);
+  color: #0f1730;
+  z-index: 100;
+}
+
+.bg {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+  transform: rotate(180deg);
+}
+
+.section {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+
+  .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-color: var(--bg-opacity-2);
+    border-bottom-left-radius: var(--angle-radius);
+    border-bottom-right-radius: var(--angle-radius);
+    background-color: var(--bg-opacity-1);
+    @include backdrop;
+    box-shadow: 0 -0.5px 1px 0.5px rgba(var(--grey-secondary-rgb), 0.1) inset,
+      0 16px 54px -16px rgba(0, 0, 0, 0.2);
+  }
+
+  &.left {
+    .back {
+      border-left-width: 1px;
+      transform: skewX(var(--angle));
+      transform-origin: top left;
+    }
+  }
+
+  &.right {
+    .back {
+      border-right-width: 1px;
+      transform: skewX(var(--angle-reverse));
+      transform-origin: top right;
+    }
+  }
+}

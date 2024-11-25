@@ -28,7 +28,7 @@ export const Wrapper = ({ children }: WrapperProps) => {
       <Header />
       <div className={clsx(s.main, pathname === "/" && s.home)}>
         <main>{children}</main>
-        <Footer />
+        {!pathname.includes("/boutique") && <Footer />}
       </div>
       <Toaster
         position="bottom-right"

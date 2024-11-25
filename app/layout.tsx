@@ -7,6 +7,7 @@ import { getLocale, getMessages } from "next-intl/server"
 import NextTopLoader from "nextjs-toploader"
 import { Wrapper } from "./(components)/wrapper"
 import { fonts } from "./fonts"
+import { Provider } from "./(components)/provider"
 
 export async function generateMetadata() {
   return MetadataSeo("Seo.Home")
@@ -34,7 +35,9 @@ export default async function RootLayout({
           zIndex={9999999}
         />
         <NextIntlClientProvider messages={messages}>
-          <Wrapper>{children}</Wrapper>
+          <Provider>
+            <Wrapper>{children}</Wrapper>
+          </Provider>
         </NextIntlClientProvider>
       </body>
     </html>

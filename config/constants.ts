@@ -20,3 +20,10 @@ export const OBSERVER = {
   root: null,
   rootMargin: "0px"
 }
+
+export const TAGS = {
+  collections: "collections",
+  products: "products",
+  cart: "cart",
+  webstoreData: "webstoreData"
+}

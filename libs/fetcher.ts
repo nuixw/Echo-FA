@@ -1,15 +1,26 @@
-export const fetcher = async (url: string, options: RequestInit = {}) => {
+import { env } from "@/env"
+
+const baseUrl = env.TEBEX_API_URL
+const publicApiKey = env.TEBEX_PUBLIC_API_KEY
+
+export const fetcher = async <T = any>(
+  url: string,
+  options: RequestInit = {}
+): Promise<T | undefined> => {
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`${baseUrl}/accounts/${publicApiKey}${url}`, {
+      body: options.body ? JSON.stringify(options.body) : undefined,
       headers: {
         Accept: "application/json",
+        "Content-Type": "application/json; charset=UTF8",
         ...options.headers
       },
-      next: {
-        revalidate: 1 // Revalide le cache toutes les 60 secondes
-      },
+      method: options.method || "GET",
+      // cache: "no-store",
       ...options
     })
+
+    console.log({ Called: url })
 
     if (!response.ok) {
       throw new Error(
@@ -17,8 +28,7 @@ export const fetcher = async (url: string, options: RequestInit = {}) => {
       )
     }
 
-    const { data } = await response.json()
-    return data
+    return (await response.json()) as T
   } catch (error) {
     throw new Error(
       `Erreur de requête: ${

@@ -43,6 +43,9 @@
         <circle cx="233.5" cy="233.5" r="83.5" />
       </g>
     </g>
+    <g id="triangle">
+      <path fill="currentColor" d="M59 0L0 71H59V0Z M59 0L118 71H59V0Z"/>
+    </g>
     <filter
       id="blurer"
       x="0"

@@ -13,3 +13,56 @@
     flex: 1;
   }
 }
+
+.toast {
+  background-color: var(--bg-opacity-1);
+  padding: 1em;
+  border-radius: var(--angle-radius);
+  box-shadow: var(--shadow-1), var(--shadow-2);
+  color: var(--txt);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  [data-title] {
+    font-size: 14px;
+    padding-left: 0.25em;
+
+    &::before {
+      content: "Succès";
+      display: block;
+      font-family: var(--font-secondary);
+      color: var(--color);
+      font-size: 15px;
+      margin-bottom: 0.25em;
+    }
+  }
+
+  &[data-type="success"] {
+    --color: var(--success-primary);
+    --txt: var(--success-secondary);
+
+    [data-tile] {
+      &::before {
+        content: "Succès";
+      }
+    }
+  }
+
+  &[data-type="error"] {
+    --color: var(--danger-primary);
+    --txt: var(--danger-secondary);
+
+    [data-tile] {
+      &::before {
+        content: "Erreur";
+      }
+    }
+  }
+
+  [data-icon] {
+    svg {
+      fill: var(--color);
+      top: -10px;
+    }
+  }
+}

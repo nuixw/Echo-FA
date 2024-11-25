@@ -1,6 +1,9 @@
+import { IconName } from "./icons"
+
 export interface NavLinkProps {
   label: string
   href: string
+  icon?: IconName
 }
 
 export const NAV_LINKS: Record<string, NavLinkProps> = {
@@ -42,11 +45,13 @@ export const NAV_LINKS: Record<string, NavLinkProps> = {
   },
   coins: {
     label: "Coins",
-    href: "/boutique/coins"
+    href: "/boutique/coins",
+    icon: "coins"
   },
   vip: {
     label: "VIP",
-    href: "/boutique/vip"
+    href: "/boutique/vip",
+    icon: "vip"
   },
   streamers: {
     label: "Streamers",
