@@ -31,5 +31,7 @@ export const TAGS = {
 export const SHOP = {
   maxCart: 50,
   minToCart: 1,
-  maxToCart: 50
+  maxToCart: 50,
+  minCitizen: 3,
+  maxCitizen: 20
 }

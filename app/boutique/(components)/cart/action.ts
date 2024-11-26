@@ -1,6 +1,6 @@
 "use server"
 
-import { TAGS } from "@/config/constants"
+import { SHOP, TAGS } from "@/config/constants"
 import { addToBasket, getBasket } from "@/services/tebex"
 import { TebexBasket } from "@/types/Tebex"
 import { revalidateTag } from "next/cache"
@@ -8,9 +8,26 @@ import { cookies } from "next/headers"
 import { z } from "zod"
 
 const schema = z.object({
-  packageId: z.number().positive("L'ID du package doit être un nombre positif"),
-  qty: z.number().min(1, "La quantité doit être d'au moins 1"),
-  citizenid: z.string().min(1, "L'ID citoyen est requis")
+  packageId: z
+    .number()
+    .positive("L'ID du package doit être un nombre positif."),
+  qty: z
+    .number()
+    .min(SHOP.minToCart, `La quantité doit être d'au moins ${SHOP.minToCart}.`)
+    .max(
+      SHOP.maxToCart,
+      `La quantité doit être d'au maximum ${SHOP.maxToCart}.`
+    ),
+  citizenid: z
+    .string()
+    .min(
+      SHOP.minCitizen,
+      `L'ID citoyen doit être d'au moins ${SHOP.minCitizen} caractères.`
+    )
+    .max(
+      SHOP.maxCitizen,
+      `L'ID citoyen doit être d'au maximum ${SHOP.maxCitizen} caractères.`
+    )
 })
 
 type AddItemProps = z.infer<typeof schema>
