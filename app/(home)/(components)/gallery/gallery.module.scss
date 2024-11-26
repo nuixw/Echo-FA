@@ -24,6 +24,18 @@ $responsive: 1084px;
     background-color: var(--bg-opacity-1);
     box-shadow: var(--shadow-1);
   }
+
+  .japan {
+    font-size: calc(10px + 8 * (100vw - 320px) / 1080);
+    top: 58%;
+    left: 85%;
+    letter-spacing: 0.5em;
+    color: var(--primary);
+
+    @include max(850px) {
+      display: none;
+    }
+  }
 }
 
 .palmier {
@@ -85,18 +97,6 @@ $responsive: 1084px;
 
   .l2 {
     z-index: 150;
-  }
-}
-
-.japan {
-  font-size: calc(10px + 8 * (100vw - 320px) / 1080);
-  top: 58%;
-  left: 85%;
-  letter-spacing: 0.5em;
-  color: var(--primary);
-
-  @include max(850px) {
-    display: none;
   }
 }
 

@@ -28,7 +28,6 @@
     padding-left: 0.25em;
 
     &::before {
-      content: "Succès";
       display: block;
       font-family: var(--font-secondary);
       color: var(--color);
@@ -41,7 +40,7 @@
     --color: var(--success-primary);
     --txt: var(--success-secondary);
 
-    [data-tile] {
+    [data-title] {
       &::before {
         content: "Succès";
       }
@@ -52,7 +51,7 @@
     --color: var(--danger-primary);
     --txt: var(--danger-secondary);
 
-    [data-tile] {
+    [data-title] {
       &::before {
         content: "Erreur";
       }

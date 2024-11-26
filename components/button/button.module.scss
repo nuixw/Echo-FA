@@ -47,6 +47,10 @@
     left: 0.1em;
   }
 
+  strong {
+    top: 0.05em;
+  }
+
   &::after {
     transition: opacity var(--transition);
     content: "";

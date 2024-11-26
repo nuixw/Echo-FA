@@ -1,6 +1,7 @@
 "use server"
 
 import { TAGS } from "@/config/constants"
+import { env } from "@/env"
 import { fetcher } from "@/libs/fetcher"
 import {
   AddToBasketFunction,
@@ -22,13 +23,19 @@ import {
 } from "@/types/Tebex"
 import { cookies } from "next/headers"
 
+const publicApiKey = env.TEBEX_PUBLIC_API_KEY
+
 export const getBasketId = async () => {
   return cookies().get("basketId")?.value
 }
 
+export const removeBasketId = async () => {
+  return cookies().delete("basketId")
+}
+
 export const getBasket: GetBasketFunction = async (basketId) => {
   const response = await fetcher<TebexData<TebexBasket>>(
-    `/baskets/${basketId}`,
+    `/accounts/${publicApiKey}/baskets/${basketId}`,
     {
       next: {
         tags: [TAGS.cart]
@@ -45,12 +52,7 @@ export const getBasket: GetBasketFunction = async (basketId) => {
 
 export const getAuthUrl: GetAuthUrlFunction = async (basketId, returnUrl) => {
   const response = await fetcher<TebexAuthUrl[]>(
-    `/baskets/${basketId}/auth?returnUrl=${returnUrl}`,
-    {
-      next: {
-        tags: [TAGS.cart]
-      }
-    }
+    `/accounts/${publicApiKey}/baskets/${basketId}/auth?returnUrl=${returnUrl}`
   )
 
   if (response) {
@@ -79,7 +81,7 @@ export const getCategory: GetCategoryFunction = async (
   includePackages = false
 ) => {
   const response = await fetcher<TebexData<TebexCategory>>(
-    `/categories/${categoryId}?includePackages=${(includePackages
+    `/accounts/${publicApiKey}/categories/${categoryId}?includePackages=${(includePackages
       ? 1
       : 0
     ).toString()}`
@@ -97,7 +99,10 @@ export const getCategories: GetCategoriesFunction = async (
   checker = () => true
 ) => {
   const response = await fetcher<TebexData<TebexCategory[]>>(
-    `/categories?includePackages=${(includePackages ? 1 : 0).toString()}`
+    `/accounts/${publicApiKey}/categories?includePackages=${(includePackages
+      ? 1
+      : 0
+    ).toString()}`
   )
 
   if (response) {
@@ -110,14 +115,18 @@ export const getCategories: GetCategoriesFunction = async (
 export const addToBasket: AddToBasketFunction = async (
   basketId,
   packageId,
-  quantity = 1
+  quantity,
+  citizenid
 ) => {
   const response = await fetcher<TebexData<TebexBasket> | TebexMessage>(
     `/baskets/${basketId}/packages`,
     {
       body: {
         package_id: packageId,
-        quantity
+        quantity,
+        variable_data: {
+          citizenid
+        }
       },
       method: "POST"
     }

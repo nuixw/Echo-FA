@@ -1,0 +1,41 @@
+@import "styles/mixins";
+
+.list {
+  margin-bottom: var(--main-top);
+}
+
+.title {
+  font-size: calc(42px + 24 * (100vw - 320px) / 1080);
+  font-family: var(--font-primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: calc(40px + 32 * (100vw - 320px) / 1080) 0
+    calc(32px + 32 * (100vw - 320px) / 1080);
+
+  strong {
+    color: var(--secondary);
+  }
+}
+
+.slider {
+  --spacing: calc(16px + 24 * (100vw - 320px) / 1080);
+  margin: calc(var(--spacing) * -0.5);
+
+  overflow: visible;
+
+  & > * {
+    align-items: stretch;
+  }
+}
+
+.slide {
+  padding: calc(var(--spacing) * 0.5);
+  display: flex;
+  flex-direction: stretch;
+  height: auto;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}

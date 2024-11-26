@@ -1,0 +1,163 @@
+@import "styles/mixins";
+
+.hero {
+  padding-top: calc(var(--main-top) / 1.25);
+
+  .wrapper {
+    padding-right: calc(350 * (100vw - 320px) / 1080);
+  }
+}
+
+.coin {
+  position: absolute;
+  top: -5%;
+  width: 50%;
+  left: 55%;
+  z-index: -2;
+}
+
+.blur {
+  &Primary {
+    position: absolute;
+    fill: var(--primary);
+    width: 80%;
+    left: 10%;
+    top: -25%;
+    opacity: 0.5;
+    z-index: -1;
+    @include user-select;
+  }
+
+  &Secondary {
+    position: absolute;
+    fill: var(--secondary);
+    width: 80%;
+    left: 40%;
+    top: -35%;
+    opacity: 1;
+    z-index: -3;
+    @include user-select;
+  }
+}
+
+.heading {
+  --size: calc(80px + 72 * (100vw - 320px) / 1080);
+  text-transform: uppercase;
+
+  @include max(850px) {
+    margin-top: calc(150px + 10 * (100vw - 320px) / 1080);
+  }
+
+  .sub {
+    left: calc(var(--size) * 1.3);
+  }
+
+  .title {
+    font-size: var(--size);
+    font-family: var(--font-primary);
+    font-weight: 800;
+
+    span {
+      display: block;
+    }
+
+    .l1 {
+      color: var(--primary);
+      font-size: 0.5em;
+    }
+
+    .l2 {
+      margin: -0.23em 0 -0.32em;
+      color: var(--secondary);
+
+      svg {
+        position: absolute;
+        width: 0.9em;
+        top: 0.2em;
+        fill: var(--text-primary);
+        transform: translateX(-75%);
+      }
+    }
+  }
+}
+
+.content {
+  margin: calc(var(--main-padding) / 1.5) 0 calc(var(--main-padding) / 2);
+  font-size: calc(12px + 2 * (100vw - 320px) / 1080);
+  color: var(--text-secondary);
+  line-height: 1.75;
+
+  & > * + * {
+    margin-top: 0.1em;
+  }
+}
+
+.card {
+  --n: 2;
+  --gap: calc(8px + 4 * (100vw - 320px) / 1080);
+  gap: var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    --padding: calc(16px + 4 * (100vw - 320px) / 1080);
+    width: calc(100% / var(--n) - var(--gap) / 2);
+    display: flex;
+    align-items: center;
+    padding: calc(var(--padding) * 0.75) var(--padding);
+    font-size: calc(11px + 1 * (100vw - 320px) / 1080);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-weight: 300;
+    gap: var(--padding);
+    background-color: var(--bg-opacity-3);
+    box-shadow: var(--shadow-1), var(--shadow-2);
+    @include backdrop;
+
+    svg {
+      width: 2.5em;
+      min-width: 2.5em;
+      color: var(--primary);
+      left: 0.15em;
+
+      * {
+        stroke-width: 1;
+      }
+    }
+  }
+}
+
+.bg {
+  position: absolute;
+  inset: 0 0 -25%;
+  overflow: hidden;
+  z-index: -1;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+  }
+
+  &::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--body-rgb), 0.95) 10%,
+      rgba(var(--body-rgb), 0)
+    );
+  }
+
+  &::after {
+    top: 50%;
+    background: linear-gradient(to top, var(--body), rgba(var(--body-rgb), 0));
+  }
+
+  & > div {
+    position: absolute;
+    inset: 0;
+    background: url("/img/coins-hero-bg.webp") no-repeat center center / cover;
+    will-change: transform;
+  }
+}

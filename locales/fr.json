@@ -74,5 +74,32 @@
         "line2": "Photos"
       }
     }
+  },
+  "Shop": {
+    "Panel": {
+      "login": "Se connecter",
+      "basket": "Panier",
+      "logged": "Vous êtes connecté.",
+      "logout": "Vous êtes déconnecté.",
+      "needLogin": "Vous devez être connecté pour ajouter un article au panier."
+    },
+    "Coins": {
+      "sub": "E-Coins",
+      "title": {
+        "line1": "Acheter des",
+        "line2": "coins"
+      },
+      "txt1": "Les E-Coins sont la monnaie premium d'Echo FA.",
+      "txt2": "Utilisez-les pour déverrouiller du contenu exclusif comme :",
+      "card1": "Coffres mystères (Bronze, Silver, Gold, Diamond).",
+      "card2": "Avantages VIP pour personnaliser votre expérience et améliorer votre gameplay.",
+      "card3": "Accès à des véhicules rares, armes spéciales, ou objets uniques dans le jeu.",
+      "card4": "Et bien plus encore !",
+      "offre": "Nos offres E-<strong>Coins</strong>"
+    },
+    "Item": {
+      "free": "Gratuit",
+      "add": "Ajouter au panier"
+    }
   }
 }

@@ -27,3 +27,9 @@ export const TAGS = {
   cart: "cart",
   webstoreData: "webstoreData"
 }
+
+export const SHOP = {
+  maxCart: 50,
+  minToCart: 1,
+  maxToCart: 50
+}

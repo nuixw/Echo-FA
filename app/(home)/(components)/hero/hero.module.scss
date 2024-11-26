@@ -2,6 +2,18 @@
 
 .hero {
   overflow: hidden;
+
+  .japan {
+    font-size: calc(10px + 8 * (100vw - 320px) / 1080);
+    top: 13%;
+    left: 36%;
+    letter-spacing: 0.5em;
+
+    @include max(600px) {
+      top: 0;
+      font-size: 9px;
+    }
+  }
 }
 
 .palmier {
@@ -180,18 +192,6 @@
         width: 50%;
       }
     }
-  }
-}
-
-.japan {
-  font-size: calc(10px + 8 * (100vw - 320px) / 1080);
-  top: 13%;
-  left: 36%;
-  letter-spacing: 0.5em;
-
-  @include max(600px) {
-    top: 0;
-    font-size: 9px;
   }
 }
 

@@ -1,10 +1,18 @@
 import { fetcher } from "@/libs/fetcher"
 import { cookies } from "next/headers"
 
+import { APP_URL } from "@/config/app"
+import { env } from "@/env"
+
+const publicApiKey = env.TEBEX_PUBLIC_API_KEY
+
 export async function POST() {
-  const response = await fetcher(`/baskets`, {
+  const response = await fetcher(`/accounts/${publicApiKey}/baskets`, {
     method: "POST",
-    body: JSON.stringify({})
+    body: {
+      complete_url: `${APP_URL}/boutique?complete=true`,
+      cancel_url: `${APP_URL}/boutique?cancel=true`
+    }
   })
   const cart = response?.data
 

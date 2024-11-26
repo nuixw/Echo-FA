@@ -31,7 +31,9 @@ export const Nav = () => {
     },
     {
       ...NAV_LINKS.boutique,
-      left: true
+      left: true,
+      sub: true,
+      list: [NAV_LINKS.vip, NAV_LINKS.coins]
     },
     {
       ...NAV_LINKS.streamers,

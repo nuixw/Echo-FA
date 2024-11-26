@@ -3,30 +3,40 @@
 import { Button } from "@/components/button"
 import { useBasketStore } from "@/stores/basket"
 import clsx from "clsx"
+import { useTranslations } from "next-intl"
+import { useState } from "react"
 import { toast } from "sonner"
+import { CartModal } from "../cart/modal"
 import { removeBasket } from "./action"
 import s from "./panel.module.scss"
 
 export const Panel = () => {
-  const { basket, authUrl, logout, setLoading } = useBasketStore()
+  const t = useTranslations("Shop.Panel")
+  const { logged, basket, authUrl, logout, setLoading } = useBasketStore()
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className={s.panel}>
-      <Button className={s.item} icon="basket">
-        Panier - 0€
+      <Button
+        className={s.item}
+        icon="basket"
+        strong={`${logged ? basket?.total_price : 0}€`}
+        onClick={() => setIsOpen(true)}
+      >
+        {t("basket")}
       </Button>
-      {basket && basket.username ? (
+      {logged ? (
         <>
           <Button
-            className={s.item}
+            className={clsx(s.item, s.logout)}
             icon="logout"
             onClick={async () => {
               await removeBasket()
               await logout()
-              toast.success("Vous êtes déconnecté")
+              toast.success(t("logout"))
             }}
           >
-            {basket.username}
+            {basket?.username}
           </Button>
         </>
       ) : (
@@ -37,7 +47,7 @@ export const Panel = () => {
           }}
         >
           <Button className={s.item} icon="fivem">
-            Se connecter
+            {t("login")}
           </Button>
         </a>
       )}
@@ -46,6 +56,7 @@ export const Panel = () => {
           <div className={s.back} />
         </div>
       </div>
+      {isOpen && <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />}
     </div>
   )
 }

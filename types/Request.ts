@@ -35,7 +35,8 @@ export type GetAuthUrlFunction = (
 export type AddToBasketFunction = (
   basketId: string,
   packageId: number,
-  quantity?: number
+  quantity: number,
+  citizenid: string
 ) => Promise<TebexData<TebexBasket> | TebexMessage | undefined>
 
 export type RemoveFromBasketFunction = (

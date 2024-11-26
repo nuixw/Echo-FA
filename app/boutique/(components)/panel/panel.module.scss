@@ -16,6 +16,10 @@
     flex-direction: row;
     font-size: 0.9em;
 
+    strong {
+      color: var(--primary);
+    }
+
     svg {
       transform: scale(1.25) !important;
       right: -0.4em;
@@ -36,6 +40,19 @@
 
       &::after {
         opacity: 1;
+      }
+    }
+
+    &.logout {
+      --color: transparent;
+
+      &:hover,
+      &.active {
+        --color: var(--danger-primary);
+      }
+
+      svg {
+        color: var(--danger-primary);
       }
     }
   }

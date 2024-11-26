@@ -1,14 +1,15 @@
 import { env } from "@/env"
 
 const baseUrl = env.TEBEX_API_URL
-const publicApiKey = env.TEBEX_PUBLIC_API_KEY
 
 export const fetcher = async <T = any>(
   url: string,
   options: Record<string, any> = {}
 ): Promise<T | undefined> => {
   try {
-    const response = await fetch(`${baseUrl}/accounts/${publicApiKey}${url}`, {
+    console.log("CALL-", `${baseUrl}${url}`)
+    const response = await fetch(`${baseUrl}${url}`, {
+      ...options,
       body: options.body ? JSON.stringify(options.body) : undefined,
       headers: {
         Accept: "application/json",
@@ -16,11 +17,11 @@ export const fetcher = async <T = any>(
         ...options.headers
       },
       method: options.method || "GET",
-      // cache: "no-store",
-      ...options
+      // next: {
+      //   revalidate: 60
+      // },
+      cache: "no-store"
     })
-
-    console.log({ Called: url })
 
     if (!response.ok) {
       throw new Error(

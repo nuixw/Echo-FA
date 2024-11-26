@@ -10,36 +10,36 @@
   ul {
     @include flex;
     height: 100%;
-  }
 
-  .item {
-    --color: transparent;
-    --bg-color: var(--bg-opacity-1);
-    --height: 2.75em;
-    color: var(--text-secondary);
-    flex-direction: row;
-    font-size: 0.9em;
+    .item {
+      --color: transparent;
+      --bg-color: var(--bg-opacity-1);
+      --height: 2.75em;
+      color: var(--text-secondary);
+      flex-direction: row;
+      font-size: 0.9em;
 
-    svg {
-      transform: scaleX(-1) scale(1.25) !important;
-      right: -0.4em;
-    }
-
-    &::after {
-      opacity: 0;
-    }
-
-    &:hover,
-    &.active {
-      --color: var(--primary);
-      color: var(--text-primary);
-    }
-
-    &.active {
-      color: var(--primary);
+      svg {
+        transform: scaleX(-1) scale(1.25) !important;
+        right: -0.4em;
+      }
 
       &::after {
-        opacity: 1;
+        opacity: 0;
+      }
+
+      &:hover,
+      &.active {
+        --color: var(--primary);
+        color: var(--text-primary);
+      }
+
+      &.active {
+        color: var(--primary);
+
+        &::after {
+          opacity: 1;
+        }
       }
     }
   }

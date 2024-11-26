@@ -1,0 +1,71 @@
+@import "styles/mixins";
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 var(--size-1);
+
+  th {
+    background-color: var(--bg-opacity-1);
+    font-size: calc(12px + 1 * (100vw - 320px) / 1080);
+    font-family: var(--font-secondary);
+    text-align: left;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    padding: 0.5em 1em 0.45em;
+  }
+
+  td {
+    vertical-align: middle;
+    background-color: var(--bg-opacity-3);
+    padding: 1em;
+
+    &:first-child {
+      background-color: var(--bg-opacity-2);
+    }
+
+    &.empty {
+      background-color: var(--bg-danger-1);
+      text-align: center;
+      color: var(--danger-primary);
+      font-size: calc(12px + 1 * (100vw - 320px) / 1080);
+    }
+  }
+
+  .img {
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .price {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 1.1em;
+
+    &.total {
+      color: var(--primary);
+    }
+  }
+}
+
+.proceed {
+  transition: background-color var(--transition-link);
+  @include flex;
+  background-color: var(--primary);
+  color: var(--body);
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  padding: 0.75em 1em;
+  font-size: calc(16px + 2 * (100vw - 320px) / 1080);
+
+  &:hover {
+    background-color: var(--secondary);
+  }
+}

@@ -37,6 +37,7 @@ export const Wrapper = ({ children }: WrapperProps) => {
           className: s.toast
         }}
       />
+      <div id="modal-root" />
     </>
   )
 }

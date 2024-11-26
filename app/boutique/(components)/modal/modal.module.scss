@@ -1,0 +1,26 @@
+@import "styles/mixins";
+
+.modal {
+  text-align: center;
+
+  h2 {
+    color: var(--success-primary);
+    font-weight: 700;
+    font-size: calc(40px + 16 * (100vw - 320px) / 1080);
+    margin: auto calc(var(--modal-padding) / 3) -0.2em;
+    text-align: center;
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+  }
+
+  .anim {
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    font-size: calc(16px + 2 * (100vw - 320px) / 1080);
+    line-height: 1.75;
+    color: var(--success-secondary);
+  }
+}

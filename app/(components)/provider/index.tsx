@@ -1,6 +1,7 @@
 "use client"
 
 import { useBasketStore } from "@/stores/basket"
+import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 import { toast } from "sonner"
@@ -10,7 +11,9 @@ interface ProviderProps {
 }
 
 export const Provider = ({ children }: ProviderProps) => {
-  const { fetchBasketId, fetchBasket, fetchAuthUrl } = useBasketStore()
+  const t = useTranslations("Shop.Panel")
+  const { complete, fetchBasketId, fetchBasket, fetchAuthUrl } =
+    useBasketStore()
   // const { fetchWebstoreData } = useWebstoreStore()
   const searchParams = useSearchParams()
 
@@ -21,13 +24,22 @@ export const Provider = ({ children }: ProviderProps) => {
     })
   }, [fetchBasketId, fetchBasket, fetchAuthUrl])
 
+  useEffect(() => {
+    if (complete) {
+      fetchBasketId().then(() => {
+        fetchBasket()
+        fetchAuthUrl()
+      })
+    }
+  }, [complete])
+
   // useEffect(() => {
   //   fetchWebstoreData()
   // }, [fetchWebstoreData])
 
   useEffect(() => {
     if (searchParams.get("success")) {
-      toast.success("Vous êtes connecté")
+      toast.success(t("logged"))
       const url = new URL(window.location.href)
       url.searchParams.delete("success")
       window.history.replaceState({}, "", url)

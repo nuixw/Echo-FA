@@ -11,8 +11,16 @@ export const ICONS = {
   vip: "hugeicons:crown",
   coins: "hugeicons:coins-01",
   basket: "hugeicons:shopping-basket-03",
+  basketAdd: "hugeicons:shopping-basket-add-03",
   logout: "hugeicons:logout-03",
-  loader: "svg-spinners:6-dots-rotate"
+  loader: "svg-spinners:6-dots-rotate",
+  packageOpen: "hugeicons:package-open",
+  stars: "hugeicons:stars",
+  car: "hugeicons:car-02",
+  gift: "hugeicons:gift",
+  id: "hugeicons:identification",
+  plus: "hugeicons:plus-sign-square",
+  minus: "hugeicons:minus-sign-square"
 } as const
 
 export type IconName = keyof typeof ICONS

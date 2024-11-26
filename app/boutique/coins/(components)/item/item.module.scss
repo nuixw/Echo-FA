@@ -1,0 +1,184 @@
+@import "styles/mixins";
+
+.item {
+  --color: rgb(var(--color-rgb));
+  --padding: calc(24px + 8 * (100vw - 320px) / 1080);
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    padding: var(--padding);
+    background-color: var(--content-bg);
+    box-shadow: 0 0 0 1px var(--content-bg) inset;
+    font-size: calc(12px + 1 * (100vw - 320px) / 1080);
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .title {
+    font-size: calc(56px + 56 * (100vw - 320px) / 1080);
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+    line-height: 0.5;
+    color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    span {
+      display: block;
+      color: rgba(var(--primary-rgb), 0.5);
+      font-size: 0.4em;
+      font-weight: 600;
+      margin: 0.25em 0 0.7em;
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 120%;
+        top: 30%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%) rotate(-5deg);
+        background-color: var(--secondary);
+      }
+    }
+
+    strong {
+      font-weight: 800;
+    }
+
+    small {
+      font-size: 0.13em;
+      color: var(--text-primary);
+      background-color: var(--secondary);
+      position: absolute;
+      left: 60%;
+      bottom: -15%;
+      transform: rotate(-5deg);
+      line-height: 1;
+      white-space: nowrap;
+      font-weight: 600;
+      padding: 0.2em 0.2em 0;
+    }
+
+    &:not(.bonus) {
+      span,
+      small {
+        @include auto-alpha(0);
+        @include user-select;
+      }
+    }
+  }
+
+  .description {
+    --content-bg: var(--bg-opacity-3);
+    flex: 1;
+
+    & > * + * {
+      margin-top: 0.75em;
+    }
+
+    h4 {
+      color: var(--text-primary);
+      text-transform: uppercase;
+      font-family: var(--font-primary);
+      font-weight: 600;
+      font-size: 1.75em;
+    }
+  }
+
+  .illu {
+    @include flex;
+    position: absolute;
+    width: 55%;
+    right: 0;
+    top: 0;
+    transform: translate(5%, -25%);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .blur {
+    --size: calc(300px + 100 * (100vw - 320px) / 1080);
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    top: 0;
+    overflow: visible;
+    fill: var(--color);
+    left: 0;
+    pointer-events: none;
+    opacity: 0.75;
+    transform: translate3d(0, 0, 0) translate(-20%, -30%);
+    overflow: visible;
+    z-index: -1;
+
+    &Primary {
+      --color: var(--primary);
+      left: -5%;
+    }
+
+    &Secondary {
+      --color: var(--secondary);
+      top: 20%;
+    }
+  }
+
+  .back {
+    position: absolute;
+    inset: 0;
+    background-color: var(--bg-opacity-3);
+    box-shadow: var(--shadow-1), var(--shadow-2);
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+
+    @include min(600px) {
+      @include backdrop;
+    }
+  }
+
+  .corner {
+    --size: calc(50px + 100 * (100vw - 320px) / 1080);
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    z-index: 5;
+    overflow: hidden;
+
+    &.tl {
+      --color-corner: var(--primary);
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(270deg);
+    }
+
+    &::after,
+    &::before {
+      content: "";
+      width: 150%;
+      height: 150%;
+      position: absolute;
+      background-color: var(--color-corner, var(--grey-secondary));
+    }
+
+    &::after {
+      bottom: 98.5%;
+      left: 10%;
+      transform: rotate(1deg);
+    }
+
+    &::before {
+      bottom: 10%;
+      left: 98.5%;
+      transform: rotate(-1deg);
+    }
+  }
+}

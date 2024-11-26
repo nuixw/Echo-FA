@@ -1,3 +1,5 @@
+import { TebexBasket } from "@/types/Tebex"
+
 export const capitalize = (str: string) =>
   `${str.charAt(0).toUpperCase()}${str.slice(1)}`
 
@@ -21,4 +23,12 @@ export const extractEmoji = (children: React.ReactNode) => {
     emoji,
     content
   }
+}
+
+export const calculateTotalQuantity = (basketData: TebexBasket | undefined) => {
+  return (
+    basketData?.packages.reduce((acc, pkg) => {
+      return acc + (pkg.in_basket.quantity || 0)
+    }, 0) || 0
+  )
 }

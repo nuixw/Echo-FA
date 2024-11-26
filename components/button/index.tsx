@@ -19,6 +19,8 @@ export interface ButtonProps {
   onClick?: () => void
   reverse?: boolean
   secondary?: boolean
+  strong?: string
+  type?: "submit" | "reset" | "button"
 }
 
 export const Button = ({
@@ -31,6 +33,8 @@ export const Button = ({
   disabled = false,
   reverse = false,
   secondary = false,
+  strong,
+  type,
   ...props
 }: ButtonProps) => {
   const ref = useRef(null)
@@ -39,6 +43,7 @@ export const Button = ({
       <div className={s.left} />
       {icon && iconPosition == "left" && <Icon icon={icon} />}
       {children && <Glitch parent={ref}>{children}</Glitch>}
+      {strong && <strong>{strong}</strong>}
       {icon && iconPosition == "right" && <Icon icon={icon} />}
       <div className={s.right} />
     </>
@@ -46,9 +51,9 @@ export const Button = ({
 
   const classNames = clsx(
     s.btn,
-    className,
     reverse && s.reverse,
-    secondary && s.secondary
+    secondary && s.secondary,
+    className
   )
 
   const attrs = {
@@ -75,6 +80,7 @@ export const Button = ({
       <button
         {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
         {...attrs}
+        type={type}
         ref={ref}
       >
         {Content}

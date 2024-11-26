@@ -12,6 +12,19 @@
   transform: translateX(-50%);
   font-size: calc(var(--aside-height) / 4.3);
 
+  &::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    width: 100vw;
+    height: 150%;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    z-index: 0;
+    background: linear-gradient(to top, var(--body), rgba(var(--body-rgb), 0));
+  }
+
   & > * {
     z-index: 5;
   }
@@ -20,8 +33,11 @@
     pointer-events: none !important;
 
     a,
-    button {
-      opacity: 0.5;
+    button,
+    a *,
+    button * {
+      pointer-events: none !important;
+      opacity: 0.6;
       filter: blur(2px);
     }
 
