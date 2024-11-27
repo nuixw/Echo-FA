@@ -1,4 +1,11 @@
-import { Item, Rule, RuleSubtitle, Subitem } from "@/components/mdx/mdx"
+import {
+  ImageFaq,
+  Item,
+  Question,
+  Rule,
+  RuleSubtitle,
+  Subitem
+} from "@/components/mdx/mdx"
 import type { MDXComponents } from "mdx/types"
 import { extractEmoji } from "./libs/utils"
 
@@ -14,6 +21,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </h2>
       )
     },
+    Image: ImageFaq,
+    Question,
     Rule,
     RuleSubtitle,
     Item,

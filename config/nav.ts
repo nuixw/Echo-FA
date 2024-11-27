@@ -1,9 +1,11 @@
+import { APP_URL_VOTE } from "./app"
 import { IconName } from "./icons"
 
 export interface NavLinkProps {
   label: string
-  href: string
+  href?: string
   icon?: IconName
+  disabled?: boolean
 }
 
 export const NAV_LINKS: Record<string, NavLinkProps> = {
@@ -16,8 +18,8 @@ export const NAV_LINKS: Record<string, NavLinkProps> = {
     href: "/serveur"
   },
   rejoindre: {
-    label: "Nous rejoindre",
-    href: "/serveur/rejoindre"
+    label: "Rejoindre",
+    href: "/rejoindre"
   },
   reglement: {
     label: "Règlement",
@@ -55,11 +57,12 @@ export const NAV_LINKS: Record<string, NavLinkProps> = {
   },
   streamers: {
     label: "Streamers",
-    href: "/streamers"
+    href: "/streamers",
+    disabled: true
   },
   voter: {
     label: "Voter",
-    href: "/voter"
+    href: APP_URL_VOTE
   },
   socials: {
     label: "Socials",
@@ -67,18 +70,22 @@ export const NAV_LINKS: Record<string, NavLinkProps> = {
   },
   contact: {
     label: "Nous contacter",
-    href: "/nous-contacter"
+    href: "/nous-contacter",
+    disabled: true
   },
   legal: {
     label: "Mentions légales",
-    href: "/mentions-legales"
+    href: "/mentions-legales",
+    disabled: true
   },
   cgv: {
     label: "Conditions de ventes",
-    href: "/cgv"
+    href: "/cgv",
+    disabled: true
   },
   sitemap: {
     label: "Plan du site",
-    href: "/plan-du-site"
+    href: "/plan-du-site",
+    disabled: true
   }
 }

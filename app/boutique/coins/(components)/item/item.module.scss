@@ -138,10 +138,6 @@
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
-
-    @include min(600px) {
-      @include backdrop;
-    }
   }
 
   .corner {

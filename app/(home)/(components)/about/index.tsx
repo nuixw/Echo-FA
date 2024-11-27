@@ -5,6 +5,7 @@ import { Japan, Sub, Wrapper } from "@/components/kit"
 import { Line } from "@/components/line"
 import { Palmier } from "@/components/palmier"
 import { APP_NAME } from "@/config/app"
+import { NAV_LINKS } from "@/config/nav"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useTranslations } from "next-intl"
@@ -71,7 +72,7 @@ export const About = () => {
           <p className={s.p1}>{t("p1")}</p>
           <p className={s.p2}>{t("p2")}</p>
         </div>
-        <Button reverse secondary>
+        <Button href={NAV_LINKS.rejoindre.href} reverse secondary>
           {t("join")}
         </Button>
       </Wrapper>

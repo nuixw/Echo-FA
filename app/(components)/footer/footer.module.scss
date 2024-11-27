@@ -48,6 +48,11 @@
     transition: color var(--transition-link), text-shadow var(--transition-link);
     text-shadow: 0 0 0 var(--color);
 
+    &.disabled {
+      opacity: 0.4;
+      pointer-events: none !important;
+    }
+
     &:hover {
       color: var(--color);
       text-shadow: 0 0 24px var(--color);

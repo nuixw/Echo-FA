@@ -3,11 +3,17 @@
 .rule {
   --padding: calc(20px + 4 * (100vw - 320px) / 1080);
   --item-padding: calc(var(--padding) / 1.25);
-  --border-radius: 3px;
+  --border-radius: var(--angle-radius);
   font-size: calc(13px + 2 * (100vw - 320px) / 1080);
   display: flex;
   flex-direction: column;
+  transition: color var(--transition-link),
+    background-color var(--transition-link);
   @include backdrop(8px);
+
+  &.question {
+    --padding: calc(24px + 8 * (100vw - 320px) / 1080);
+  }
 
   & + & {
     margin-top: var(--size-2);
@@ -39,7 +45,23 @@
     }
   }
 
+  .keyBind {
+    color: var(--secondary);
+    background-color: var(--bg-opacity-3);
+    padding: 0.1em 0.3em;
+    border-radius: var(--angle-radius);
+    font-family: var(--font-secondary);
+    text-transform: uppercase;
+    border-radius: var(--angle-radius);
+    border: 1px solid rgba(var(--secondary-rgb), 0.5);
+    font-size: 0.5em;
+    vertical-align: middle;
+    margin-left: 0.5em;
+  }
+
   summary {
+    transition: color var(--transition-link),
+      background-color var(--transition-link);
     display: flex;
     gap: 0.5rem;
     @include user-select(none);
@@ -83,6 +105,35 @@
     @include max(600px) {
       padding: calc(var(--padding) / 2);
       padding-top: 0;
+    }
+  }
+
+  .content {
+    padding: var(--padding);
+    padding-top: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--padding);
+    border: 1px solid var(--bg-opacity-2);
+    border-top: 0;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    flex-wrap: wrap;
+
+    @include max(600px) {
+      padding: var(--padding);
+      padding-top: 0;
+    }
+
+    .reponse {
+      flex: 1;
+      min-width: calc(250px + 200 * (100vw - 320px) / 1080);
+    }
+
+    .faqImg {
+      border: 1px solid var(--primary);
+      border-radius: var(--angle-radius);
+      margin: auto;
+      align-self: center;
     }
   }
 

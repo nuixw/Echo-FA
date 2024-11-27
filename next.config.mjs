@@ -5,8 +5,11 @@ import createNextIntlPlugin from "next-intl/plugin"
 const nextConfig = {
   reactStrictMode: false,
   // Configure pageExtensions to include md and mdx
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"]
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   // Optionally, add any other Next.js config below
+  images: {
+    formats: ["image/webp"]
+  }
 }
 
 const withNextIntl = createNextIntlPlugin("./config/i18n.ts")

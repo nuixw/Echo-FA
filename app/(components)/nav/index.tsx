@@ -18,20 +18,18 @@ export const Nav = () => {
       left: true
     },
     {
+      ...NAV_LINKS.rejoindre,
+      left: true
+    },
+    {
       ...NAV_LINKS.serveur,
       left: true,
       sub: true,
-      list: [
-        NAV_LINKS.rejoindre,
-        NAV_LINKS.reglement,
-        NAV_LINKS.entreprises,
-        NAV_LINKS.penal,
-        NAV_LINKS.faq
-      ]
+      list: [NAV_LINKS.reglement, NAV_LINKS.penal, NAV_LINKS.faq]
     },
     {
       ...NAV_LINKS.boutique,
-      left: true,
+      right: true,
       sub: true,
       list: [
         {
@@ -43,10 +41,6 @@ export const Nav = () => {
           icon: undefined
         }
       ]
-    },
-    {
-      ...NAV_LINKS.streamers,
-      right: true
     },
     {
       ...NAV_LINKS.socials,
@@ -67,7 +61,7 @@ export const Nav = () => {
   return (
     <>
       <nav className={clsx(s.nav, open && s.open)} data-lenis-prevent>
-        <ul>
+        <ul itemScope itemType="http://www.schema.org/SiteNavigationElement">
           <List list={list} side="left" />
           <li className={s.separator} />
           <List list={list} side="right" />

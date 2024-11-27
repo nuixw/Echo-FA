@@ -19,7 +19,7 @@ export const Hero = () => {
   const t = useTranslations("Shop.Coins")
   const list: ListProps[] = [
     {
-      icon: "packageOpen",
+      icon: "gun",
       txt: t("card1")
     },
     {

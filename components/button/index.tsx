@@ -21,6 +21,7 @@ export interface ButtonProps {
   secondary?: boolean
   strong?: string
   type?: "submit" | "reset" | "button"
+  itemProp?: string
 }
 
 export const Button = ({
@@ -35,6 +36,7 @@ export const Button = ({
   secondary = false,
   strong,
   type,
+  itemProp,
   ...props
 }: ButtonProps) => {
   const ref = useRef(null)
@@ -71,6 +73,7 @@ export const Button = ({
         {...attrs}
         href={href}
         ref={ref}
+        itemProp={itemProp}
       >
         {Content}
       </Link>

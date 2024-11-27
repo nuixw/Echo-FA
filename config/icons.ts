@@ -32,7 +32,18 @@ export const ICONS = {
   gun: "hugeicons:gun",
   tractor: "hugeicons:tractor",
   bag: "hugeicons:hand-bag-02",
-  moto: "hugeicons:motorbike-02"
+  moto: "hugeicons:motorbike-02",
+  book: "hugeicons:book-02",
+  police: "hugeicons:police-cap",
+  city: "hugeicons:city-01",
+  building: "hugeicons:building-06",
+  unavailable: "hugeicons:unavailable",
+  taxi: "hugeicons:taxi",
+  island: "hugeicons:island",
+  folderPlus: "hugeicons:folder-add",
+  prison: "hugeicons:prison",
+  justice: "hugeicons:justice-scale-02",
+  faq: "hugeicons:bubble-chat-question"
 } as const
 
 export type IconName = keyof typeof ICONS

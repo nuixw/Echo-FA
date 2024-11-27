@@ -22,7 +22,7 @@ export const List = ({ list, side }: ListProps) => {
   return list.map(
     (item) =>
       item[side] && (
-        <li key={item.href}>
+        <li key={item.href} itemProp="name">
           {item.sub ? (
             <>
               <NavLink
@@ -30,15 +30,17 @@ export const List = ({ list, side }: ListProps) => {
                 label={item.label}
                 side={side}
                 sub={item.sub && item.sub}
+                disabled={item.disabled}
               />
               <ul className={s.sub}>
                 {item.list?.map((sub) => (
-                  <li key={sub.href}>
+                  <li key={sub.href} itemProp="name">
                     <NavLink
                       href={sub.href}
                       label={sub.label}
                       side={side}
                       icon={sub.icon}
+                      disabled={sub.disabled}
                     />
                   </li>
                 ))}

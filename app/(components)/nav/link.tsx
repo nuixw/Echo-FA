@@ -10,14 +10,24 @@ interface NavLinkItemProps extends NavLinkProps {
   side?: DirectionHorizontal
   sub?: boolean
   icon?: IconName
+  disabled?: boolean
 }
 
-export const NavLink = ({ label, href, side, sub, icon }: NavLinkItemProps) => {
+export const NavLink = ({
+  label,
+  href,
+  side,
+  sub,
+  icon,
+  disabled
+}: NavLinkItemProps) => {
   const pathname = usePathname()
   const reverse = side === "right"
   const className = clsx(
     s.item,
-    (href === "/" ? pathname === "/" : pathname.includes(href)) && s.active
+    (href === "/" ? pathname === "/" : pathname?.includes(href || "")) &&
+      s.active,
+    disabled && s.disabled
   )
 
   return (
@@ -32,6 +42,7 @@ export const NavLink = ({ label, href, side, sub, icon }: NavLinkItemProps) => {
           reverse={!sub && reverse}
           className={className}
           icon={icon}
+          itemProp="url"
         >
           {label}
         </Button>

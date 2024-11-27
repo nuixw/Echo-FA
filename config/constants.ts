@@ -37,3 +37,6 @@ export const SHOP = {
 }
 
 export const GLOBAL_ERROR = `Une erreur est survenue, contactez-nous sur Discord rubrique "bug-report".`
+
+export const UPDATE_CODE_PENAL = "27 Novembre 2024"
+export const UPDATE_FAQ = "27 Novembre 2024"

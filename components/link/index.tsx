@@ -11,10 +11,11 @@ interface LinkProps extends Omit<NextLinkProps, "href"> {
   className?: string
   children: React.ReactNode
   onClick?: (event: MouseEvent<HTMLAnchorElement | HTMLDivElement>) => void
+  itemProp?: string
 }
 
 export const Link = forwardRef<HTMLAnchorElement | HTMLDivElement, LinkProps>(
-  ({ href, title, className, onClick, children, ...props }, ref) => {
+  ({ href, title, className, onClick, children, itemProp, ...props }, ref) => {
     const lenis = useLenis()
     const pathname = usePathname()
     const isExternal = href.startsWith("http")
@@ -39,6 +40,7 @@ export const Link = forwardRef<HTMLAnchorElement | HTMLDivElement, LinkProps>(
         href={href}
         title={title}
         className={className}
+        itemProp={itemProp}
         {...props}
         {...attr}
       >
@@ -47,4 +49,5 @@ export const Link = forwardRef<HTMLAnchorElement | HTMLDivElement, LinkProps>(
     )
   }
 )
+
 Link.displayName = "Link"

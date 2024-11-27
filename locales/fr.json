@@ -37,22 +37,22 @@
         "card1": {
           "sub": "Scripts",
           "title": "Des scripts <strong>100% Customs</strong>",
-          "desc": "Huic Arabia est conserta, ex alio latere Nabataeis contigua opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium."
+          "desc": "Profitez d'une expérience unique grâce à nos scripts développés sur mesure. De la gestion d'entreprise aux missions spéciales, chaque aspect du jeu a été pensé pour enrichir votre aventure RP."
         },
         "card2": {
           "sub": "Idées",
           "title": "Votre serveur <strong>vos idées</strong>",
-          "desc": "Huic Arabia est conserta, ex alio latere Nabataeis contigua opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium."
+          "desc": "Chez Echo FA, votre voix compte. Nous encourageons activement la communauté à partager ses idées et suggestions pour faire évoluer le serveur. Votre créativité façonne notre univers."
         },
         "card3": {
           "sub": "Développement",
           "title": "Des développeurs <strong>expérimentés</strong>",
-          "desc": "Huic Arabia est conserta, ex alio latere Nabataeis contigua opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium."
+          "desc": "Notre équipe de développeurs chevronnés assure une stabilité optimale et une innovation constante. Leur expertise garantit une expérience de jeu fluide et des mises à jour régulières."
         },
         "card4": {
           "sub": "Respect",
           "title": "Des joueurs <strong>respectueux</strong>",
-          "desc": "Huic Arabia est conserta, ex alio latere Nabataeis contigua opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium."
+          "desc": "Rejoignez une communauté bienveillante où le respect est la règle d'or. Nos joueurs partagent les mêmes valeurs : entraide, fair-play et immersion RP de qualité."
         }
       }
     },
@@ -63,8 +63,8 @@
         "line2": "sommes",
         "line3": "nous?"
       },
-      "p1": "Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium.",
-      "p2": "Saltus erexit et cautos. Haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo.",
+      "p1": "Echo FA est né de la passion de joueurs et développeurs désireux de créer une expérience RP unique sur GTA V. Notre serveur se démarque par ses scripts entièrement personnalisés et une approche communautaire où chaque joueur peut contribuer à l'évolution de l'univers.",
+      "p2": "Portés par une équipe de développeurs expérimentés, nous mettons un point d'honneur à offrir un environnement de jeu stable et innovant. Notre communauté bienveillante et nos systèmes de jeu uniques font d'Echo FA un serveur où roleplay rime avec créativité et respect.",
       "join": "Nous rejoindre"
     },
     "Gallery": {
@@ -91,9 +91,9 @@
       },
       "txt1": "Les E-Coins sont la monnaie premium d'Echo FA.",
       "txt2": "Utilisez-les pour déverrouiller du contenu exclusif comme :",
-      "card1": "Coffres mystères (Bronze, Silver, Gold, Diamond).",
+      "card1": "Accès à un arsenal d'armes spéciales.",
       "card2": "Avantages VIP pour personnaliser votre expérience et améliorer votre gameplay.",
-      "card3": "Accès à des véhicules rares, armes spéciales, ou objets uniques dans le jeu.",
+      "card3": "Accès à des véhicules rares ou objets uniques dans le jeu.",
       "card4": "Et bien plus encore !",
       "offre": "Nos offres E-<strong>Coins</strong>"
     },

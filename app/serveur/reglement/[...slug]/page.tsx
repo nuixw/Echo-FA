@@ -3,7 +3,7 @@
 import { ReglementItemProps, reglement } from "@/config/reglement"
 import dynamic from "next/dynamic"
 import { redirect } from "next/navigation"
-import s from "./page.module.scss"
+
 interface PageProps {
   params: { slug: string }
 }
@@ -45,9 +45,9 @@ export default function Page({ params }: PageProps) {
   )
 
   return (
-    <div className={s.page}>
+    <>
       <h1 id={currentItem.slug}>{currentItem.title}</h1>
       <MdxContent />
-    </div>
+    </>
   )
 }

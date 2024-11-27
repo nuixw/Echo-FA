@@ -1,0 +1,58 @@
+@import "styles/mixins";
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, calc(150px + 100 * (100vw - 320px) / 1080)), 1fr)
+  );
+  gap: var(--size-2);
+}
+
+.card {
+  --padding: calc(24px + 8 * (100vw - 320px) / 1080);
+  transition: background-color var(--transition-link);
+  border: 1px solid var(--bg-opacity-2);
+  @include backdrop(8px);
+  border-radius: var(--angle-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--padding);
+  gap: calc(var(--padding) * 0.5);
+  height: 100%;
+
+  &:hover {
+    background-color: var(--bg-opacity-4);
+    cursor: pointer;
+
+    svg {
+      color: var(--secondary);
+    }
+  }
+
+  svg {
+    transition: color var(--transition-link);
+    font-size: calc(48px + 8 * (100vw - 320px) / 1080);
+    color: var(--primary);
+
+    * {
+      stroke-width: 0.75 !important;
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: calc(18px + 4 * (100vw - 320px) / 1080);
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 0.9;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

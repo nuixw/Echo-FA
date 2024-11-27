@@ -9,14 +9,26 @@ import { APP_NAME } from "@/config/app"
 import { NAV_LINKS } from "@/config/nav"
 import { SOCIALS } from "@/config/socials"
 import { useGSAP } from "@gsap/react"
+import clsx from "clsx"
 import gsap from "gsap"
 import { useTranslations } from "next-intl"
 import { usePathname } from "next/navigation"
 import s from "./footer.module.scss"
 
-const FooterLink = ({ href, label }: { href: string; label: string }) => (
-  <Link href={href}>{label}</Link>
-)
+interface FooterLinkProps {
+  href?: string
+  label: string
+  disabled?: boolean
+}
+
+const FooterLink = ({ href, label, disabled }: FooterLinkProps) =>
+  href ? (
+    <Link href={href} className={clsx(disabled && s.disabled)}>
+      {label}
+    </Link>
+  ) : (
+    <span>{label}</span>
+  )
 
 export const Footer = () => {
   const pathname = usePathname()
@@ -35,12 +47,7 @@ export const Footer = () => {
     {
       title: "Serveur",
       color: "secondary",
-      list: [
-        NAV_LINKS.reglement,
-        NAV_LINKS.entreprises,
-        NAV_LINKS.penal,
-        NAV_LINKS.faq
-      ]
+      list: [NAV_LINKS.reglement, NAV_LINKS.penal, NAV_LINKS.faq]
     },
     {
       title: "Boutique",
@@ -88,9 +95,9 @@ export const Footer = () => {
               >
                 <h3>{title}</h3>
                 <ul>
-                  {list.map(({ label, href }) => (
-                    <li key={href}>
-                      <FooterLink href={href} label={label} />
+                  {list.map((item) => (
+                    <li key={item.href}>
+                      <FooterLink {...item} />
                     </li>
                   ))}
                 </ul>
@@ -108,7 +115,7 @@ export const Footer = () => {
           </div>
           <div className={s.right}>
             {SOCIALS.map(({ href, icon, label }) => (
-              <Link key={href} href={href} title={label}>
+              <Link key={href} href={href as string} title={label}>
                 <Icon icon={icon} />
               </Link>
             ))}

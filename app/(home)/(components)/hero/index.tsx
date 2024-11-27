@@ -5,7 +5,8 @@ import { Japan, Sub, Wrapper } from "@/components/kit"
 import { Line } from "@/components/line"
 import { Palmier } from "@/components/palmier"
 import { Sprite } from "@/components/sprite"
-import { APP_NAME } from "@/config/app"
+import { APP_NAME, APP_URL_DISCOVER } from "@/config/app"
+import { NAV_LINKS } from "@/config/nav"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useTranslations } from "next-intl"
@@ -78,8 +79,10 @@ export const Hero = () => {
             </div>
           </div>
           <div className={s.btn}>
-            <Button reverse>{t("discover")}</Button>
-            <Button reverse secondary>
+            <Button href={APP_URL_DISCOVER} reverse>
+              {t("discover")}
+            </Button>
+            <Button href={NAV_LINKS.rejoindre.href} reverse secondary>
               {t("join")}
             </Button>
           </div>

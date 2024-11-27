@@ -38,10 +38,10 @@ export const List = ({ packages }: ListProps) => {
             dangerouslySetInnerHTML={{ __html: t.raw("offre") }}
           />
           <div className={s.nav}>
-            <button onClick={handlePrev}>
+            <button onClick={handlePrev} aria-label="Précédent">
               <Icon icon="arrowLeft" />
             </button>
-            <button onClick={handleNext}>
+            <button onClick={handleNext} aria-label="Suivant">
               <Icon icon="arrowRight" />
             </button>
           </div>

@@ -3,3 +3,5 @@ Pour mes icons, j'utilise le component Icon de @/components/icon et il se prése
 J'utilise le package @t3-oss/env-nextjs afin de pouvoir utiliser des variables d'environnement dans le projet correctement et l'import se fait comme ceci : import { env } from "@/env"
 
 Quand j'ajoute une Image, il faut faire l'import import Image from "next/image"
+
+Pour mes <Link> j'utilise un sous composent dans @/components/link et pas next/link

@@ -10,3 +10,6 @@ export const APP_URL =
   env.NEXT_PUBLIC_NODE_ENV == "development"
     ? "http://localhost:3000"
     : env.NEXT_PUBLIC_URL
+
+export const APP_URL_VOTE = "https://serveur-prive.net/grand-theft-auto"
+export const APP_URL_DISCOVER = "/serveur/reglement/bases-rp"
