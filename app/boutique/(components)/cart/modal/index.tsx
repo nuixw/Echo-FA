@@ -63,7 +63,7 @@ export const CartModal = ({ isOpen, setIsOpen }: CartModalProps) => {
         </tfoot>
       </table>
       {totalPrice > 0 && (
-        <a href={basket?.links.checkout} className={s.proceed}>
+        <a href={`https://pay.tebex.io/${basket?.ident}`} className={s.proceed}>
           Accéder au paiement
         </a>
       )}

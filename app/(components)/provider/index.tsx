@@ -4,18 +4,17 @@ import { removeSearchParams } from "@/libs/utils"
 import { useBasketStore } from "@/stores/basket"
 import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 import { toast } from "sonner"
 
 interface ProviderProps {
   children: React.ReactNode
 }
 
-export const Provider = ({ children }: ProviderProps) => {
+const ProviderContent = () => {
   const t = useTranslations("Shop.Panel")
   const { logged, complete, fetchBasketId, fetchBasket, fetchAuthUrl } =
     useBasketStore()
-  // const { fetchWebstoreData } = useWebstoreStore()
   const searchParams = useSearchParams()
 
   useEffect(() => {
@@ -32,18 +31,23 @@ export const Provider = ({ children }: ProviderProps) => {
         fetchAuthUrl()
       })
     }
-  }, [complete])
-
-  // useEffect(() => {
-  //   fetchWebstoreData()
-  // }, [fetchWebstoreData])
+  }, [complete, fetchBasketId, fetchBasket, fetchAuthUrl])
 
   useEffect(() => {
     if (searchParams.get("success") && !logged) {
       toast.success(t("logged"))
       removeSearchParams(searchParams)
     }
-  }, [searchParams])
+  }, [searchParams, logged, t])
 
-  return children
+  return null
+}
+
+export const Provider = ({ children }: ProviderProps) => {
+  return (
+    <Suspense>
+      <ProviderContent />
+      {children}
+    </Suspense>
+  )
 }

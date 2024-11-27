@@ -263,9 +263,8 @@ export const useBasketStore = create<BasketStore>((set, get) => ({
       setLoading(false)
     }
   },
-
   addPackage: async (pkg) => {
-    const { basket, updateTotal, setLoading, vipInBasket } = get()
+    const { basket, updateTotal, setLoading, vipInBasket, fetchBasket } = get()
     if (!basket) return
     if (vipInBasket && pkg.id === Number(env.NEXT_PUBLIC_PACKAGE_VIP)) return
 
@@ -276,6 +275,7 @@ export const useBasketStore = create<BasketStore>((set, get) => ({
     }
 
     try {
+      const isBasketEmpty = basket.packages.length === 0
       const existingPackageIndex = basket.packages.findIndex(
         (pack) => pack.id === pkg.id
       )
@@ -300,6 +300,10 @@ export const useBasketStore = create<BasketStore>((set, get) => ({
         basket: { ...basket, packages: updatedPackages }
       })
       updateTotal()
+
+      if (isBasketEmpty) {
+        // await fetchBasket()
+      }
     } catch (error) {
       console.error("Erreur lors de l'ajout du package:", error)
     } finally {
