@@ -30,7 +30,7 @@ export const Item = ({ pkg }: { pkg: TebexBasketPackage }) => {
       <td className={s.name}>{pkg.name}</td>
       <td>
         <div className={s.price}>
-          {price.toFixed(2)}€{" "}
+          {price.toFixed(2)}€
           {pkg.id === Number(env.NEXT_PUBLIC_PACKAGE_VIP) && (
             <small>/mois</small>
           )}

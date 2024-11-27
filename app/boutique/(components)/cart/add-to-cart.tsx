@@ -152,7 +152,7 @@ export const AddToCart = ({ item }: AddToCartProps) => {
             />
           </div>
           <div className={s.unit}>
-            Prix <strong>{item.base_price.toFixed(2)}€</strong>{" "}
+            Prix <strong>{item.base_price.toFixed(2)}€</strong>
             <small>TTC</small>
           </div>
         </div>
