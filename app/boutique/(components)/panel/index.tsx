@@ -6,13 +6,13 @@ import { useBasketStore } from "@/stores/basket"
 import clsx from "clsx"
 import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { toast } from "sonner"
 import { CartModal } from "../cart/modal"
 import { removeBasket } from "./action"
 import s from "./panel.module.scss"
 
-export const Panel = () => {
+const PanelContent = () => {
   const t = useTranslations("Shop.Panel")
   const { complete, logged, basket, authUrl, logout, setLoading, totalPrice } =
     useBasketStore()
@@ -25,7 +25,7 @@ export const Panel = () => {
       removeSearchParams(searchParams)
       setTimeout(() => toast.error("Vous avez annulé le paiement."), 100)
     }
-  }, [searchParams])
+  }, [searchParams, complete])
 
   return (
     <div className={s.panel}>
@@ -70,5 +70,13 @@ export const Panel = () => {
       </div>
       {isOpen && <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />}
     </div>
+  )
+}
+
+export const Panel = () => {
+  return (
+    <Suspense>
+      <PanelContent />
+    </Suspense>
   )
 }

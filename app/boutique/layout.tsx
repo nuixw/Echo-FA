@@ -2,7 +2,7 @@
 
 import { useBasketStore } from "@/stores/basket"
 import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { Aside } from "./(components)/aside"
 import { ModalComplete } from "./(components)/modal/complete"
 import s from "./layout.module.scss"
@@ -11,7 +11,7 @@ interface LayoutProps {
   children: React.ReactNode
 }
 
-export default function Layout({ children }: LayoutProps) {
+const LayoutContent = ({ children }: LayoutProps) => {
   const searchParams = useSearchParams()
   const [isOpen, setIsOpen] = useState(false)
   const { complete } = useBasketStore()
@@ -28,5 +28,13 @@ export default function Layout({ children }: LayoutProps) {
       <Aside />
       {isOpen && <ModalComplete isOpen={isOpen} setIsOpen={setIsOpen} />}
     </div>
+  )
+}
+
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <Suspense>
+      <LayoutContent children={children} />
+    </Suspense>
   )
 }
