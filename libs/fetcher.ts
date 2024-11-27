@@ -16,11 +16,8 @@ export const fetcher = async <T = any>(
         "Content-Type": "application/json; charset=UTF8",
         ...options.headers
       },
-      method: options.method || "GET",
-      // next: {
-      //   revalidate: 60
-      // },
-      cache: options.cache || "no-store"
+      method: options.method || "GET"
+      // cache: options.cache || "no-store"
     })
 
     if (!response.ok) {
