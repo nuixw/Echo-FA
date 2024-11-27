@@ -34,7 +34,7 @@ const LayoutContent = ({ children }: LayoutProps) => {
 export default function Layout({ children }: LayoutProps) {
   return (
     <Suspense>
-      <LayoutContent children={children} />
+      <LayoutContent>{children}</LayoutContent>
     </Suspense>
   )
 }
