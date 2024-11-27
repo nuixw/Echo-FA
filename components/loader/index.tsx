@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import { Icon } from "../icon"
-import s from "./Loader.module.scss"
+import s from "./loader.module.scss"
 
 interface LoaderProps {
   className?: string
