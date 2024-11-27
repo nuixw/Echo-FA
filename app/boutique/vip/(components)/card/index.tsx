@@ -17,9 +17,9 @@ interface CardProps {
 }
 
 export const Card = ({ pkg }: CardProps) => {
-  if (!pkg) return
-
   const { isLoading, vipInBasket } = useBasketStore()
+
+  if (!pkg) return
 
   return (
     <Wrapper>
