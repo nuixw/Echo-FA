@@ -1,5 +1,5 @@
+import { env } from "@/env"
 import { getCategory } from "@/services/tebex"
-import { env } from "process"
 import { Hero } from "./(components)/hero"
 import { List } from "./(components)/list"
 

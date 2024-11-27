@@ -9,6 +9,7 @@ import {
   GetBasketFunction,
   GetCategoriesFunction,
   GetCategoryFunction,
+  GetPackageFunction,
   GetWebstoreDataFunction,
   RemoveFromBasketFunction,
   UpdateQuantityFunction
@@ -19,6 +20,7 @@ import {
   TebexCategory,
   TebexData,
   TebexMessage,
+  TebexPackage,
   TebexWebstore
 } from "@/types/Tebex"
 import { cookies } from "next/headers"
@@ -84,7 +86,14 @@ export const getCategory: GetCategoryFunction = async (
     `/accounts/${publicApiKey}/categories/${categoryId}?includePackages=${(includePackages
       ? 1
       : 0
-    ).toString()}`
+    ).toString()}`,
+    {
+      cache: "force-cache",
+      next: {
+        revalide: 3600,
+        tags: categoryId
+      }
+    }
   )
 
   if (response) {
@@ -109,6 +118,18 @@ export const getCategories: GetCategoriesFunction = async (
     return response.data.filter(checker)
   } else {
     return []
+  }
+}
+
+export const getPackage: GetPackageFunction = async (packageId) => {
+  const response = await fetcher<TebexData<TebexPackage>>(
+    `/accounts/${publicApiKey}/packages/${packageId}`
+  )
+
+  if (response) {
+    return response.data
+  } else {
+    return undefined
   }
 }
 

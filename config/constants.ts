@@ -2,6 +2,8 @@ import { env } from "@/env"
 
 export const IS_SERVER = typeof window === "undefined"
 
+export const DEBOUNCE_TIME = 500
+
 export const REVALIDATE_TIME =
   env.NEXT_PUBLIC_NODE_ENV === "development" ? 0 : 60 * 60 * 24
 
@@ -22,8 +24,6 @@ export const OBSERVER = {
 }
 
 export const TAGS = {
-  collections: "collections",
-  products: "products",
   cart: "cart",
   webstoreData: "webstoreData"
 }
@@ -35,3 +35,5 @@ export const SHOP = {
   minCitizen: 3,
   maxCitizen: 20
 }
+
+export const GLOBAL_ERROR = `Une erreur est survenue, contactez-nous sur Discord rubrique "bug-report".`

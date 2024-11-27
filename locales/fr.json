@@ -100,6 +100,51 @@
     "Item": {
       "free": "Gratuit",
       "add": "Ajouter au panier"
+    },
+    "VIP": {
+      "sub": "Abonnement",
+      "title": {
+        "line1": "Devenez",
+        "line2": "membre",
+        "line3": "VIP"
+      },
+      "txt1": "Débloquez des avantages exclusifs & rejoignez l’élite d’Echo FA !",
+      "card1": {
+        "title": "Salaire bonus automatique",
+        "txt": "+15% toutes les heures."
+      },
+      "card2": {
+        "title": "Bonus métiers Pôle Emploi",
+        "txt": "+15% d'argent en plus pour les activités professionnelles."
+      },
+      "card3": {
+        "title": "Réduction sur les véhicules",
+        "txt": "-10% sur tout le catalogue voitures en jeu."
+      },
+      "card4": {
+        "title": "Pose de props",
+        "txt": "Limité à 10 props maximum pour personnaliser ton environnement."
+      },
+      "card5": {
+        "title": "Armes exclusives",
+        "txt": "Accès à 2 modèles d'armes blanches spéciales."
+      },
+      "card6": {
+        "title": "Vitesse de récolte améliorée",
+        "txt": "Boost de +10% pour une productivité accrue."
+      },
+      "card7": {
+        "title": "Sac premium",
+        "txt": "Augmentation de l'inventaire avec +50 kg supplémentaires."
+      },
+      "card8": {
+        "title": "Avantages de mobilité",
+        "txt": "Achat possible d'un moyen de transport original comme un hoverboard ou un véhicule rare."
+      },
+      "card9": {
+        "title": "Rôle spécial sur Discord",
+        "txt": "Montre ton statut VIP à toute la communauté."
+      }
     }
   }
 }

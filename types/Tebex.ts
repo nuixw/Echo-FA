@@ -32,10 +32,16 @@ export interface TebexInBasket {
   gift_username: string | null
 }
 
+export type TebexVariableData = {
+  citizenid: string
+}
+
 export type TebexBasketPackage = TebexBaseItem & {
   description: string
-  image?: string
-  in_basket: TebexInBasket
+  image?: string | null
+  in_basket: TebexInBasket & {
+    variable_data: TebexVariableData
+  }
 }
 
 export interface TebexBasket {

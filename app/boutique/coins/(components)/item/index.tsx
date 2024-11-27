@@ -15,7 +15,7 @@ export const Item = ({ ...item }: TebexPackage) => {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `${amount} Coins`,
+    name: `${item.name}`,
     description: stripTags(item.description),
     offers: {
       "@type": "Offer",

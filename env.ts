@@ -21,7 +21,8 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_NODE_ENV: z.enum(["development", "production", "test"]),
-    NEXT_PUBLIC_URL: z.string().url()
+    NEXT_PUBLIC_URL: z.string().url(),
+    NEXT_PUBLIC_PACKAGE_VIP: z.string()
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -37,6 +38,7 @@ export const env = createEnv({
     TEBEX_CATEGORY_COINS: process.env.TEBEX_CATEGORY_COINS,
     TEBEX_CATEGORY_VIP: process.env.TEBEX_CATEGORY_VIP,
     NEXT_PUBLIC_NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
-    NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL
+    NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
+    NEXT_PUBLIC_PACKAGE_VIP: process.env.NEXT_PUBLIC_PACKAGE_VIP
   }
 })

@@ -1,5 +1,6 @@
 "use client"
 
+import { removeSearchParams } from "@/libs/utils"
 import { useBasketStore } from "@/stores/basket"
 import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation"
@@ -12,7 +13,7 @@ interface ProviderProps {
 
 export const Provider = ({ children }: ProviderProps) => {
   const t = useTranslations("Shop.Panel")
-  const { complete, fetchBasketId, fetchBasket, fetchAuthUrl } =
+  const { logged, complete, fetchBasketId, fetchBasket, fetchAuthUrl } =
     useBasketStore()
   // const { fetchWebstoreData } = useWebstoreStore()
   const searchParams = useSearchParams()
@@ -38,11 +39,9 @@ export const Provider = ({ children }: ProviderProps) => {
   // }, [fetchWebstoreData])
 
   useEffect(() => {
-    if (searchParams.get("success")) {
+    if (searchParams.get("success") && !logged) {
       toast.success(t("logged"))
-      const url = new URL(window.location.href)
-      url.searchParams.delete("success")
-      window.history.replaceState({}, "", url)
+      removeSearchParams(searchParams)
     }
   }, [searchParams])
 

@@ -1,0 +1,205 @@
+@import "styles/mixins";
+
+.hero {
+  padding-top: calc(var(--main-top) / 1.25);
+
+  @include max(850px) {
+    padding-top: calc(150px + 10 * (100vw - 320px) / 1080);
+  }
+}
+
+.crown {
+  position: absolute;
+  top: -15%;
+  width: 75%;
+  left: 50%;
+  z-index: -2;
+  min-width: 400px;
+  @include user-select;
+
+  &Right {
+    position: absolute;
+    right: 100%;
+    width: 100%;
+    top: 0;
+    @include blur(8px);
+
+    @include max(900px) {
+      display: none;
+    }
+  }
+}
+
+.blur {
+  &Vip {
+    position: absolute;
+    fill: var(--vip);
+    width: 80%;
+    left: 5%;
+    top: -15%;
+    opacity: 0.5;
+    z-index: -1;
+    @include user-select;
+  }
+
+  &Secondary {
+    position: absolute;
+    fill: var(--secondary);
+    width: 80%;
+    left: 40%;
+    top: -35%;
+    opacity: 1;
+    z-index: -3;
+    @include user-select;
+  }
+}
+
+.heading {
+  --size: calc(100px + 64 * (100vw - 320px) / 1080);
+
+  .sub {
+    left: calc(var(--size) * 0.55);
+  }
+
+  .title {
+    text-transform: uppercase;
+    font-size: var(--size);
+    font-family: var(--font-primary);
+    font-weight: 800;
+
+    span {
+      display: block;
+    }
+
+    .l1 {
+      font-size: 0.5em;
+      left: calc(var(--size) * 0.55);
+    }
+
+    .l2 {
+      font-size: 0.65em;
+      color: var(--secondary);
+      position: absolute;
+      top: calc(var(--size) * 0.5);
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+      line-height: 0.52;
+    }
+
+    .l3 {
+      font-size: 1.6em;
+      color: var(--vip);
+      line-height: 0.79;
+      padding-left: calc(var(--size) * 0.55);
+    }
+  }
+
+  .txt {
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin-top: calc(var(--size) * 0.5);
+    font-size: calc(18px + 8 * (100vw - 320px) / 1080);
+
+    @include min(700px) {
+      font-size: calc(12px + 2 * (100vw - 320px) / 1080);
+      position: absolute;
+      margin-top: 0;
+      bottom: calc(var(--size) * -0.18);
+      padding-left: calc(var(--size) * 0.65);
+      padding-right: calc(500 * (100vw - 320px) / 1080);
+    }
+  }
+}
+
+.card {
+  --gap: calc(8px + 4 * (100vw - 320px) / 1080);
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, calc(150px + 100 * (100vw - 320px) / 1080)), 1fr)
+  );
+  gap: var(--gap);
+  margin-top: calc(40px + 8 * (100vw - 320px) / 1080);
+
+  @include min(700px) {
+    margin-top: calc(72px + 8 * (100vw - 320px) / 1080);
+  }
+
+  li {
+    --padding: calc(24px + 4 * (100vw - 320px) / 1080);
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--padding) * 0.75) var(--padding);
+    font-size: calc(11px + 1 * (100vw - 320px) / 1080);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-weight: 300;
+    background-color: var(--bg-opacity-3);
+    box-shadow: var(--shadow-1), var(--shadow-2);
+    @include backdrop;
+
+    h3,
+    p {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    h3 {
+      margin-top: calc(var(--padding) * 0.5);
+      color: var(--text-primary);
+      font-family: var(--font-primary);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: calc(18px + 2 * (100vw - 320px) / 1080);
+    }
+
+    svg {
+      width: 2.5em;
+      min-width: 2.5em;
+      color: var(--vip);
+      left: 0.15em;
+
+      * {
+        stroke-width: 1;
+      }
+    }
+  }
+}
+
+.bg {
+  position: absolute;
+  inset: 0 0 0;
+  overflow: hidden;
+  z-index: -1;
+  max-height: 80vh;
+  opacity: 0.5;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+  }
+
+  &::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--body-rgb), 0.95) 10%,
+      rgba(var(--body-rgb), 0)
+    );
+  }
+
+  &::after {
+    top: 50%;
+    background: linear-gradient(to top, var(--body), rgba(var(--body-rgb), 0));
+  }
+
+  & > div {
+    position: absolute;
+    inset: 0;
+    background: url("/img/vip-hero-bg.webp") no-repeat center center / cover;
+    will-change: transform;
+  }
+}

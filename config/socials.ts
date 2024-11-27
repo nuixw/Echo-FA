@@ -7,6 +7,11 @@ export interface SocialsProps extends NavLinkProps {
 
 export const SOCIALS: SocialsProps[] = [
   {
+    label: "Discord",
+    href: "https://discord.com",
+    icon: "discord"
+  },
+  {
     label: "TikTok",
     href: "https://tiktok.com",
     icon: "tiktok"

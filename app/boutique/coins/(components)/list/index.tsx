@@ -1,5 +1,6 @@
 "use client"
 
+import { Icon } from "@/components/icon"
 import { Wrapper } from "@/components/kit"
 import { TebexPackage } from "@/types/Tebex"
 import { useTranslations } from "next-intl"
@@ -36,11 +37,21 @@ export const List = ({ packages }: ListProps) => {
             className={s.title}
             dangerouslySetInnerHTML={{ __html: t.raw("offre") }}
           />
+          <div className={s.nav}>
+            <button onClick={handlePrev}>
+              <Icon icon="arrowLeft" />
+            </button>
+            <button onClick={handleNext}>
+              <Icon icon="arrowRight" />
+            </button>
+          </div>
         </div>
         <Swiper
           ref={sliderRef}
           className={s.slider}
           spaceBetween={0}
+          noSwiping={true}
+          noSwipingClass="swiper-no-swiping"
           breakpoints={{
             600: {
               slidesPerView: 2

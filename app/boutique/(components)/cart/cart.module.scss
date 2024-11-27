@@ -3,6 +3,7 @@
 .field {
   --size: calc(54px + 8 * (100vw - 320px) / 1080);
   height: var(--size);
+  cursor: text !important;
 
   input {
     position: absolute;
@@ -16,6 +17,13 @@
       color: var(--text-secondary);
       opacity: 0.5;
     }
+
+    &:focus {
+      & + .save {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   }
 
   svg {
@@ -27,17 +35,23 @@
     color: var(--primary);
     pointer-events: none;
   }
-}
 
-.loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--primary);
-  font-size: calc(24px + 8 * (100vw - 320px) / 1080);
-  pointer-events: none;
-  display: none;
+  .save {
+    transition: color var(--transition-link), opacity var(--transition-link),
+      transform var(--transition-link);
+    left: auto;
+    right: 0;
+    padding: calc(var(--size) / 3);
+    cursor: pointer;
+    color: var(--secondary);
+    pointer-events: auto;
+    transform: scale(0.5);
+    opacity: 0;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
 }
 
 .needLogin {
@@ -65,7 +79,7 @@
     pointer-events: none;
 
     .loader {
-      display: block;
+      display: block !important;
     }
 
     & > *:not(.loader) {
@@ -140,8 +154,6 @@
 .btn {
   transition: background-color var(--transition-link),
     color var(--transition-link), border-color var(--transition-link);
-  background-color: #000;
-  padding: 24px;
   z-index: 1000;
   @include flex;
   width: 100%;

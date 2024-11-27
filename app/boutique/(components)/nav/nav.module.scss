@@ -11,6 +11,17 @@
     @include flex;
     height: 100%;
 
+    li {
+      &:first-child {
+        .item {
+          &:hover,
+          &.active {
+            --color: var(--vip);
+          }
+        }
+      }
+    }
+
     .item {
       --color: transparent;
       --bg-color: var(--bg-opacity-1);
@@ -35,7 +46,7 @@
       }
 
       &.active {
-        color: var(--primary);
+        color: var(--color);
 
         &::after {
           opacity: 1;

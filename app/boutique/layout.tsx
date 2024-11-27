@@ -25,8 +25,6 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className={s.layout}>
       {children}
-      {searchParams.get("complete")}
-      {isOpen ? "true" : "false"}
       <Aside />
       {isOpen && <ModalComplete isOpen={isOpen} setIsOpen={setIsOpen} />}
     </div>

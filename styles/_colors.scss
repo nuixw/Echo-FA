@@ -5,6 +5,7 @@
     secondary: "255, 0, 255",
     tertiary: "134, 54, 255",
     quaternary: "9, 165, 255",
+    vip: "255, 185, 33",
     text-primary: "255, 255, 255",
     text-secondary: "183, 194, 221",
     grey-primary: "51, 60, 102",
@@ -22,6 +23,7 @@
 
   --bg-danger-1: rgba(var(--danger-primary-rgb), 0.1);
   --bg-success-1: rgba(var(--success-primary-rgb), 0.1);
+
   @each $color, $rgb in $colors {
     --#{$color}-rgb: #{$rgb};
     --#{$color}: rgb(var(--#{$color}-rgb));

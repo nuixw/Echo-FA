@@ -1,10 +1,12 @@
 "use client"
 
 import { Button } from "@/components/button"
+import { removeSearchParams } from "@/libs/utils"
 import { useBasketStore } from "@/stores/basket"
 import clsx from "clsx"
 import { useTranslations } from "next-intl"
-import { useState } from "react"
+import { useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react"
 import { toast } from "sonner"
 import { CartModal } from "../cart/modal"
 import { removeBasket } from "./action"
@@ -12,15 +14,25 @@ import s from "./panel.module.scss"
 
 export const Panel = () => {
   const t = useTranslations("Shop.Panel")
-  const { logged, basket, authUrl, logout, setLoading } = useBasketStore()
+  const { complete, logged, basket, authUrl, logout, setLoading, totalPrice } =
+    useBasketStore()
   const [isOpen, setIsOpen] = useState(false)
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    if (searchParams.get("cancel") && !complete) {
+      setIsOpen(true)
+      removeSearchParams(searchParams)
+      setTimeout(() => toast.error("Vous avez annulé le paiement."), 100)
+    }
+  }, [searchParams])
 
   return (
     <div className={s.panel}>
       <Button
         className={s.item}
         icon="basket"
-        strong={`${logged ? basket?.total_price : 0}€`}
+        strong={`${logged ? totalPrice.toFixed(2) : 0}€`}
         onClick={() => setIsOpen(true)}
       >
         {t("basket")}

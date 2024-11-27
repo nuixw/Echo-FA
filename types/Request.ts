@@ -3,6 +3,7 @@ import {
   TebexBasket,
   TebexCategory,
   TebexMessage,
+  TebexPackage,
   TebexWebstore
 } from "./Tebex"
 
@@ -46,7 +47,7 @@ export type RemoveFromBasketFunction = (
 
 export type UpdateQuantityFunction = (
   basketId: string,
-  packageId: string,
+  packageId: number,
   newQuantity: number
 ) => Promise<TebexData<TebexBasket> | TebexMessage | undefined>
 
@@ -61,3 +62,7 @@ export type GetCategoriesFunction = (
 ) => Promise<TebexCategory[]>
 
 export type GetWebstoreDataFunction = () => Promise<TebexWebstore | undefined>
+
+export type GetPackageFunction = (
+  packageId?: number
+) => Promise<TebexPackage | undefined>

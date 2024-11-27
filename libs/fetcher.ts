@@ -20,7 +20,7 @@ export const fetcher = async <T = any>(
       // next: {
       //   revalidate: 60
       // },
-      cache: "no-store"
+      cache: options.cache || "no-store"
     })
 
     if (!response.ok) {

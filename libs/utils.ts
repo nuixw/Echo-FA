@@ -1,5 +1,3 @@
-import { TebexBasket } from "@/types/Tebex"
-
 export const capitalize = (str: string) =>
   `${str.charAt(0).toUpperCase()}${str.slice(1)}`
 
@@ -25,10 +23,10 @@ export const extractEmoji = (children: React.ReactNode) => {
   }
 }
 
-export const calculateTotalQuantity = (basketData: TebexBasket | undefined) => {
-  return (
-    basketData?.packages.reduce((acc, pkg) => {
-      return acc + (pkg.in_basket.quantity || 0)
-    }, 0) || 0
-  )
+export const removeSearchParams = (searchParams: URLSearchParams) => {
+  const url = new URL(window.location.href)
+  searchParams.forEach((v, key) => {
+    url.searchParams.delete(key)
+  })
+  window.history.replaceState({}, "", url)
 }

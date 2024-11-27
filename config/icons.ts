@@ -1,5 +1,6 @@
 export const ICONS = {
   x: "hugeicons:cancel-01",
+  discord: "iconoir:discord",
   tiktok: "teenyicons:tiktok-solid",
   youtube: "hugeicons:youtube",
   twitter: "hugeicons:new-twitter",
@@ -7,6 +8,8 @@ export const ICONS = {
   instagram: "hugeicons:instagram",
   menu: "hugeicons:menu-01",
   arrowDown: "hugeicons:arrow-down-01",
+  arrowLeft: "hugeicons:arrow-left-02",
+  arrowRight: "hugeicons:arrow-right-02",
   fivem: "simple-icons:fivem",
   vip: "hugeicons:crown",
   coins: "hugeicons:coins-01",
@@ -20,7 +23,16 @@ export const ICONS = {
   gift: "hugeicons:gift",
   id: "hugeicons:identification",
   plus: "hugeicons:plus-sign-square",
-  minus: "hugeicons:minus-sign-square"
+  minus: "hugeicons:minus-sign-square",
+  trash: "hugeicons:delete-01",
+  save: "teenyicons:save-outline",
+  money: "hugeicons:coins-01",
+  bill: "hugeicons:money-03",
+  deco: "hugeicons:table-lamp-02",
+  gun: "hugeicons:gun",
+  tractor: "hugeicons:tractor",
+  bag: "hugeicons:hand-bag-02",
+  moto: "hugeicons:motorbike-02"
 } as const
 
 export type IconName = keyof typeof ICONS

@@ -1,0 +1,12 @@
+@import "styles/mixins";
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--primary);
+  font-size: calc(24px + 8 * (100vw - 320px) / 1080);
+  pointer-events: none;
+  display: none;
+}

@@ -1,16 +1,19 @@
 "use server"
 
-import { SHOP, TAGS } from "@/config/constants"
-import { addToBasket, getBasket } from "@/services/tebex"
+import { GLOBAL_ERROR, SHOP, TAGS } from "@/config/constants"
+import {
+  addToBasket,
+  getBasket,
+  getBasketId,
+  removeFromBasket,
+  updateQuantityInBasket
+} from "@/services/tebex"
 import { TebexBasket } from "@/types/Tebex"
 import { revalidateTag } from "next/cache"
-import { cookies } from "next/headers"
 import { z } from "zod"
 
-const schema = z.object({
-  packageId: z
-    .number()
-    .positive("L'ID du package doit être un nombre positif."),
+const addItemSchema = z.object({
+  packageId: z.number().positive(GLOBAL_ERROR),
   qty: z
     .number()
     .min(SHOP.minToCart, `La quantité doit être d'au moins ${SHOP.minToCart}.`)
@@ -30,10 +33,10 @@ const schema = z.object({
     )
 })
 
-type AddItemProps = z.infer<typeof schema>
+type AddItemProps = z.infer<typeof addItemSchema>
 
 export const addItem = async (input: AddItemProps) => {
-  const result = schema.safeParse(input)
+  const result = addItemSchema.safeParse(input)
 
   if (!result.success) {
     return result.error.errors[0].message
@@ -45,7 +48,7 @@ export const addItem = async (input: AddItemProps) => {
     return "Produit introuvable."
   }
 
-  const basketId = cookies().get("basketId")?.value
+  const basketId = await getBasketId()
   let cart: TebexBasket | undefined
 
   if (basketId) {
@@ -66,6 +69,76 @@ export const addItem = async (input: AddItemProps) => {
       return true
     }
   } catch (e) {
-    return `Une erreur est survenue. Si le problème persiste, contactez-nous sur Discord rubrique "bug-report".`
+    return GLOBAL_ERROR
+  }
+}
+
+const deleteItemSchema = z.object({
+  packageId: z.number().positive(GLOBAL_ERROR)
+})
+
+type DeleteItemProps = z.infer<typeof deleteItemSchema>
+
+export const deleteItem = async (input: DeleteItemProps) => {
+  const result = deleteItemSchema.safeParse(input)
+
+  if (!result.success) {
+    return result.error.errors[0].message
+  }
+
+  const { packageId } = result.data
+  const basketId = await getBasketId()
+
+  if (!basketId || !packageId) {
+    return "Panier ou article manquant."
+  }
+
+  try {
+    await removeFromBasket(basketId, packageId)
+    revalidateTag(TAGS.cart)
+    return true
+  } catch (e) {
+    return GLOBAL_ERROR
+  }
+}
+
+const updateQuantitySchema = z.object({
+  packageId: z.number().positive(GLOBAL_ERROR),
+  qty: z
+    .number()
+    .min(SHOP.minToCart, `La quantité doit être d'au moins ${SHOP.minToCart}.`)
+    .max(
+      SHOP.maxToCart,
+      `La quantité doit être d'au maximum ${SHOP.maxToCart}.`
+    )
+})
+
+type UpdateQuantityProps = z.infer<typeof updateQuantitySchema>
+
+export const updateQuantity = async (input: UpdateQuantityProps) => {
+  const result = updateQuantitySchema.safeParse(input)
+
+  if (!result.success) {
+    return result.error.errors[0].message
+  }
+
+  const { packageId, qty } = result.data
+
+  if (!packageId) {
+    return "Produit introuvable."
+  }
+
+  const basketId = await getBasketId()
+
+  if (!basketId || !packageId) {
+    return "Panier ou article manquant."
+  }
+
+  try {
+    await updateQuantityInBasket(basketId, packageId, qty)
+    revalidateTag(TAGS.cart)
+    return true
+  } catch (e) {
+    return GLOBAL_ERROR
   }
 }
