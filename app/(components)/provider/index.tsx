@@ -32,7 +32,7 @@ export const Provider = ({ children }: ProviderProps) => {
         fetchAuthUrl()
       })
     }
-  }, [complete])
+  }, [complete, fetchBasketId, fetchBasket, fetchAuthUrl])
 
   // useEffect(() => {
   //   fetchWebstoreData()
@@ -43,7 +43,7 @@ export const Provider = ({ children }: ProviderProps) => {
       toast.success(t("logged"))
       removeSearchParams(searchParams)
     }
-  }, [searchParams])
+  }, [searchParams, logged, t])
 
   return children
 }

@@ -39,7 +39,7 @@ export const CartModal = ({ isOpen, setIsOpen }: CartModalProps) => {
         ) : (
           <tr>
             <td colSpan={6} className={s.empty}>
-              Vous n'avez aucun article dans votre panier pour le moment.
+              Vous n&apos;avez aucun article dans votre panier pour le moment.
             </td>
           </tr>
         )}

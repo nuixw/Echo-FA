@@ -48,8 +48,6 @@ export const EditQuantity = ({ packageId, qtyBase }: EditQuantityProps) => {
     totalQuantity
   } = useBasketStore()
 
-  if (!logged) return
-
   const errorMax = `Vous ne pouvez pas ajouter plus de ${SHOP.maxCart} articles au panier (Total actuel: ${totalQuantity})`
 
   const handleSuccess = async () => {
@@ -94,6 +92,8 @@ export const EditQuantity = ({ packageId, qtyBase }: EditQuantityProps) => {
 
     return () => clearTimeout(timer)
   }, [qty])
+
+  if (!logged) return null
 
   return (
     <div className={s.qty} data-qty>
