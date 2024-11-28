@@ -9,8 +9,7 @@ import s from "./item.module.scss"
 
 export const Item = ({ ...item }: TebexPackage) => {
   const t = useTranslations("Shop.Item")
-  const { newAmount, bonus } = coinsBonus[item.id]
-  const amount = Number(item.name)
+  const { amount, newAmount, bonus } = coinsBonus[item.id]
 
   const schemaData = {
     "@context": "https://schema.org",

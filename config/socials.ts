@@ -23,7 +23,7 @@ export const SOCIALS: SocialsProps[] = [
   },
   {
     label: "Twitter",
-    href: "https://x.com",
+    href: "https://x.com/EchoFA_FR",
     icon: "twitter"
   },
   {

@@ -43,7 +43,8 @@ export const ICONS = {
   folderPlus: "hugeicons:folder-add",
   prison: "hugeicons:prison",
   justice: "hugeicons:justice-scale-02",
-  faq: "hugeicons:bubble-chat-question"
+  faq: "hugeicons:bubble-chat-question",
+  facebook: "hugeicons:facebook-02"
 } as const
 
 export type IconName = keyof typeof ICONS
